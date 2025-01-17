@@ -8,6 +8,11 @@ describe('Navbar Component', () => {
     const { getByText } = render(navbar);
     expect(getByText('Workout Tracker')).toBeInTheDocument();
   });
+
+  it('renders the logo with the provided URL', () => {
+    const { getByAltText } = render(navbar, { logoUrl: 'logo.png' });
+    expect(getByAltText('Workout logo')).toHaveAttribute('src', 'logo.png');
+  });
 });
 
 

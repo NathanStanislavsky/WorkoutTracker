@@ -8,5 +8,11 @@
       <img src={logoUrl} alt="Workout logo" class="h-8 w-auto mr-3" />
       <span class="font-bold text-5xl">Workout Tracker</span>
     </div>
+
+    <div>
+        <a href="/" class="hover:text-gray-400">
+          Home
+        </a>
+      </div>
   </div>
 </nav>

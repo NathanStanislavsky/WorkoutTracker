@@ -2,7 +2,7 @@
   import Navbar from "$lib/navbar/navbar.svelte";
 </script>
 
-<Navbar />
+<Navbar logoUrl="./workout-logo.png" />
 
 <main>
   <!-- Your page content here -->

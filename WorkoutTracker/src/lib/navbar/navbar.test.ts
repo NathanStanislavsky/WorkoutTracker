@@ -13,6 +13,13 @@ describe('Navbar Component', () => {
     const { getByAltText } = render(navbar, { logoUrl: 'logo.png' });
     expect(getByAltText('Workout logo')).toHaveAttribute('src', 'logo.png');
   });
+
+  it('includes a home link with the correct href', () => {
+    const { getByText } = render(navbar);
+    const homeLink = getByText('Home');
+    expect(homeLink).toBeInTheDocument();
+    expect(homeLink.getAttribute('href')).toBe('/');
+  });
 });
 
 

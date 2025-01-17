@@ -1,10 +1,13 @@
-import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
 
-export default defineConfig({
-  plugins: [sveltekit()],
+export default defineConfig(({ mode }) => ({
   test: {
     globals: true,
-    environment: 'jsdom'
-  }
-} as any);
+    environment: "jsdom",
+  },
+  resolve: {
+    conditions: mode === "test" ? ["browser"] : [],
+  },
+  plugins: [sveltekit()],
+}));

@@ -1,0 +1,28 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  name     String
+  age      Int?
+  weight   Float?
+  workouts Workout[] // A one-to-many relationship with workouts.
+}
+
+model Workout {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  type          String   // e.g. cardio, strength, etc.
+  date          DateTime
+  duration      Int      // Duration in minutes
+  caloriesBurned Int
+  
+  // Establishing a relation with the User model.
+  user User @relation(fields: [userId], references: [id])
+}

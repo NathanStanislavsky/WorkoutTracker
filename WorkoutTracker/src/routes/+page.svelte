@@ -5,5 +5,4 @@
 
 <Navbar logoUrl="/workout-logo.png" />
 
-<h1>Database Version</h1>
-<p>{data.version}</p>
+<h1>DB version: {data.version}</h1>

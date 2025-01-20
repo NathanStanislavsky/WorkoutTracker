@@ -1,14 +1,10 @@
-import { pool } from "../db.server";
+import { prisma } from '$lib/server/prisma';
 
 export async function load() {
-  const client = await pool.connect();
-  try {
-    const { rows } = await client.query("SELECT version()");
-    const { version } = rows[0];
-    return {
-      version,
-    };
-  } finally {
-    client.release();
-  }
+  const result = await prisma.$queryRaw`SELECT version() AS version`;
+  const [{ version }] = result;
+
+  return {
+    version
+  };
 }

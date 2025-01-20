@@ -5,6 +5,7 @@ export default defineConfig(({ mode }) => ({
   test: {
     globals: true,
     environment: "jsdom",
+    exclude: ['.svelte-kit', 'node_modules', "dist"],
   },
   resolve: {
     conditions: mode === "test" ? ["browser"] : [],

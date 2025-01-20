@@ -13,6 +13,9 @@ model User {
   age      Int?
   weight   Float?
   workouts Workout[] // A one-to-many relationship with workouts.
+
+  email         String    @unique
+  passwordHash  String
 }
 
 model Workout {

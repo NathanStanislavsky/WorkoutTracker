@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/svelte";
-import SignupPage from "./SignupPage.svelte";
+import SignupPage from "./+page.svelte";
 
 describe("SignupPage", () => {
   it("renders signup form with all required inputs and submit button", () => {

@@ -24,6 +24,8 @@ describe("SignupPage", () => {
     const usernameInput = screen.getByLabelText(/username/i);
     const emailInput = screen.getByLabelText(/email/i);
     const passwordInput = screen.getByLabelText(/password/i);
+    const weightInput = screen.getByLabelText(/weight/i);
+    const ageInput = screen.getByLabelText(/age/i);
     const signUpButton = screen.getByRole("button", { name: /sign up/i });
 
     await user.click(signUpButton);
@@ -31,5 +33,7 @@ describe("SignupPage", () => {
     expect(usernameInput).toBeInvalid();
     expect(emailInput).toBeInvalid();
     expect(passwordInput).toBeInvalid();
+    expect(weightInput).toBeInvalid();
+    expect(ageInput).toBeInvalid();
   });
 });

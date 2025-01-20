@@ -2,7 +2,6 @@ import type { RequestHandler } from "./$types";
 import { prisma } from "$lib/server/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "$env/static/private";
 
 export const POST: RequestHandler = async ({
   request,
@@ -31,7 +30,7 @@ export const POST: RequestHandler = async ({
         userId: user.id,
         email: user.email,
       },
-      JWT_SECRET,
+      process.env.JWT_SECRET,
       {
         expiresIn: "2h",
       }

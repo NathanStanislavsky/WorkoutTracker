@@ -1,4 +1,6 @@
 <script>
+    import { goto } from '$app/navigation';
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -16,7 +18,7 @@
     const result = await res.json();
     if (res.ok) {
       console.log("User registered successfully:", result);
-      // Redirect or show a success message here
+      goto('/signin');
     } else {
       console.error("Error registering user:", result.error);
     }

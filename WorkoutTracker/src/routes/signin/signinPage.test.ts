@@ -13,4 +13,18 @@ describe("Signin Page", () => {
         screen.getByRole("button", { name: /sign in/i })
       ).toBeInTheDocument();
     });
+
+    it("does not allow submission if one or more fields are empty", async () => {
+        const user = userEvent.setup();
+        render(SigninPage);
+    
+        const emailInput = screen.getByLabelText(/email/i);
+        const passwordInput = screen.getByLabelText(/password/i);
+        const signUpButton = screen.getByRole("button", { name: /sign in/i });
+    
+        await user.click(signUpButton);
+    
+        expect(emailInput).toBeInvalid();
+        expect(passwordInput).toBeInvalid();
+      });
   });

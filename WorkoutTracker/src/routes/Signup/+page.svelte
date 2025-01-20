@@ -1,17 +1,39 @@
 <script>
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    const res = await fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+    if (res.ok) {
+      console.log("User registered successfully:", result);
+      // Redirect or show a success message here
+    } else {
+      console.error("Error registering user:", result.error);
+    }
+  }
 </script>
 
 <div class="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
   <h1 class="text-2xl font-bold text-center mb-6">Sign Up</h1>
-  <form class="space-y-4">
+  <form class="space-y-4" on:submit={handleSubmit}>
     <div>
-      <label for="username" class="block text-sm font-medium text-gray-700"
+      <label for="name" class="block text-sm font-medium text-gray-700"
         >Username</label
       >
       <input
         type="text"
-        id="username"
-        name="username"
+        id="name"
+        name="name"
         required
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
         placeholder="Enter a username"
@@ -30,7 +52,6 @@
         placeholder="Enter your weight"
       />
     </div>
-
     <div>
       <label for="age" class="block text-sm font-medium text-gray-700"
         >Age</label
@@ -54,7 +75,7 @@
         name="email"
         required
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-        placeholder="Enter a email"
+        placeholder="Enter an email"
       />
     </div>
     <div>

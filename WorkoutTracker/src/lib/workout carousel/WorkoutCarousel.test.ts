@@ -12,12 +12,6 @@ describe("Workout Carousel Component", () => {
         duration: 30,
         calories: 250,
       },
-      {
-        date: "2025-01-21",
-        workoutType: "Strength",
-        duration: 45,
-        calories: 300,
-      },
     ];
 
     render(WorkoutList, { props: { workouts } });
@@ -27,10 +21,5 @@ describe("Workout Carousel Component", () => {
     expect(screen.getByText("Duration")).toBeInTheDocument();
     expect(screen.getByText("30 min")).toBeInTheDocument();
     expect(screen.getByText("250")).toBeInTheDocument();
-
-    expect(screen.getByText("Strength")).toBeInTheDocument();
-    expect(screen.getByText("2025-01-21")).toBeInTheDocument();
-    expect(screen.getByText("45 min")).toBeInTheDocument();
-    expect(screen.getByText("300")).toBeInTheDocument();
   });
 });

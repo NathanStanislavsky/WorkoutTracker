@@ -5,13 +5,34 @@
   export let calories: number;
 </script>
 
-<div class="p-4 bg-white shadow rounded hover:shadow-lg transition-shadow">
-  <div class="flex items-center justify-between">
-    <h2 class="text-xl font-semibold text-gray-900">{workoutType}</h2>
-    <span class="text-sm text-gray-500">{date}</span>
+<div
+  class="p-5 bg-slate-800 rounded-lg shadow-md hover:shadow-xl transition-shadow text-white"
+>
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-lg font-semibold">
+      {workoutType}
+    </h2>
+    <span class="text-xs uppercase tracking-widest text-gray-400">
+      {date}
+    </span>
   </div>
-  <div class="mt-2 text-gray-600">
-    <p>Duration: {duration} minutes</p>
-    <p>Calories Burned: {calories}</p>
+  
+  <div class="flex items-center justify-between">
+    <div>
+      <p class="text-sm text-gray-300">
+        Duration
+      </p>
+      <p class="text-lg font-bold">
+        {duration} min
+      </p>
+    </div>
+    <div>
+      <p class="text-sm text-gray-300">
+        Calories
+      </p>
+      <p class="text-lg font-bold">
+        {calories}
+      </p>
+    </div>
   </div>
 </div>

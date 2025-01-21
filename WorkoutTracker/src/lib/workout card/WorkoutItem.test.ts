@@ -16,7 +16,9 @@ describe("WorkoutItem Component", () => {
 
     expect(getByText("Cardio")).toBeInTheDocument();
     expect(getByText("2025-01-01")).toBeInTheDocument();
-    expect(getByText("Duration: 30 minutes")).toBeInTheDocument();
-    expect(getByText("Calories Burned: 200")).toBeInTheDocument();
+    expect(getByText("Duration")).toBeInTheDocument();
+    expect(getByText("30 min")).toBeInTheDocument();
+    expect(getByText("Calories")).toBeInTheDocument();
+    expect(getByText("200")).toBeInTheDocument();
   });
 });

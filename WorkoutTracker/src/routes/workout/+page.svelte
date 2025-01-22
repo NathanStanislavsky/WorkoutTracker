@@ -41,9 +41,9 @@
   ];
 </script>
 
-<div class="flex flex-col items-center h-screen">
-  <h1 class="text-4xl font-bold">Workouts</h1>
-  <main class="max-w-4xl mx-auto mt-8" data-testid="workout-carousel" >
-    <WorkoutList {workouts}/>
-  </main>
+<div class="flex flex-col items-center">
+  <h1 class="text-4xl font-bold p-8">Workouts</h1>
 </div>
+<main class="max-w-xs mx-auto mt-8" data-testid="workout-carousel">
+  <WorkoutList {workouts} />
+</main>

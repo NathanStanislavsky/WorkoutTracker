@@ -45,5 +45,9 @@
   <h1 class="text-4xl font-bold p-8">Workouts</h1>
 </div>
 <main class="max-w-xs mx-auto mt-8" data-testid="workout-carousel">
-  <WorkoutList {workouts} />
+  {#if workouts && workouts.length > 0}
+    <WorkoutList {workouts} />
+  {:else}
+    <p>no workouts found</p>
+  {/if}
 </main>

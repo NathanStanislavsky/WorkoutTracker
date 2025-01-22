@@ -37,4 +37,12 @@ describe("WorkoutPage", () => {
     expect(screen.getByText("Push")).toBeInTheDocument();
     expect(screen.getByText("Leg")).toBeInTheDocument();
   });
+
+  it('shows a message if there are no workouts', () => {
+    const workouts = [] as any;
+
+    render(WorkoutPage, { workouts });
+    
+    expect(screen.getByText(/no workouts found/i)).toBeInTheDocument();
+  });
 });

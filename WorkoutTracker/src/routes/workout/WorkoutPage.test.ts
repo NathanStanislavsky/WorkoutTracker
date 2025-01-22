@@ -4,9 +4,10 @@ import { render, screen } from "@testing-library/svelte";
 import WorkoutPage from "./+page.svelte";
 
 describe("WorkoutPage", () => {
-  it("renders without crashing", () => {
+  it("renders without crashing and contains a header with 'Workouts'", () => {
     render(WorkoutPage);
-    expect(screen.getByText(/Workouts/i)).toBeInTheDocument();
+    const header = screen.getByRole("heading", { name: /Workouts/i });
+    expect(header).toBeInTheDocument();
   });
 
   it("displays the Workout Carousel component", () => {
@@ -38,11 +39,11 @@ describe("WorkoutPage", () => {
     expect(screen.getByText("Leg")).toBeInTheDocument();
   });
 
-  it('shows a message if there are no workouts', () => {
+  it("shows a message if there are no workouts", () => {
     const workouts = [] as any;
 
     render(WorkoutPage, { workouts });
-    
+
     expect(screen.getByText(/no workouts found/i)).toBeInTheDocument();
   });
 });

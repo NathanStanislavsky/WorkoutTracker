@@ -8,4 +8,11 @@ describe('WorkoutPage', () => {
     render(WorkoutPage);
     expect(screen.getByText(/Workouts/i)).toBeInTheDocument();
   });
+
+  it('displays the Workout Carousel component', () => {
+    render(WorkoutPage);
+    
+    const carousel = screen.getByTestId('workout-carousel');
+    expect(carousel).toBeInTheDocument();
+  });
 });

@@ -3,6 +3,7 @@
     import WorkoutItem from "../workout card/WorkoutItem.svelte";
   
     export let workouts: {
+      id: number;
       date: string;
       workoutType: string;
       duration: number;
@@ -14,6 +15,7 @@
     {#each workouts as workout}
       <div class="snap-start">
         <WorkoutItem
+          id={workout.id}
           date={workout.date}
           workoutType={workout.workoutType}
           duration={workout.duration}

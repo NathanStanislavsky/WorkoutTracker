@@ -1,7 +1,7 @@
 <script>
   import WorkoutList from '$lib/workout carousel/WorkoutCarousel.svelte';
   
-  const workouts = [
+  export let workouts = [
     {
       date: "2025-01-20",
       workoutType: "Cardio",

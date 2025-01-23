@@ -1,4 +1,3 @@
-// src/hooks.server.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { handle } from "./hooks.server";
 import { prisma } from "$lib/server/prisma";

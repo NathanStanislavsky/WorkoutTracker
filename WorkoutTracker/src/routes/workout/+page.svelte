@@ -1,44 +1,16 @@
-<script>
-  import WorkoutList from '$lib/workout carousel/WorkoutCarousel.svelte';
-  
-  export let workouts = [
-    {
-      date: "2025-01-20",
-      workoutType: "Cardio",
-      duration: 30,
-      calories: 250,
-    },
-    {
-      date: "2025-01-21",
-      workoutType: "Strength",
-      duration: 45,
-      calories: 300,
-    },
-    {
-      date: "2025-01-22",
-      workoutType: "Yoga",
-      duration: 60,
-      calories: 200,
-    },
-    {
-      date: "2025-01-20",
-      workoutType: "Cardio",
-      duration: 30,
-      calories: 250,
-    },
-    {
-      date: "2025-01-21",
-      workoutType: "Strength",
-      duration: 45,
-      calories: 300,
-    },
-    {
-      date: "2025-01-22",
-      workoutType: "Yoga",
-      duration: 60,
-      calories: 200,
-    },
-  ];
+<script lang="ts">
+  import WorkoutCarousel from "$lib/workout carousel/WorkoutCarousel.svelte";
+  import type { PageData } from './$types';
+
+  export let data: PageData;
+
+  const workouts = data.workouts as Array<{
+    id: number;
+    date: string;
+    workoutType: string;
+    duration: number;
+    calories: number;
+  }>;
 </script>
 
 <div class="flex flex-col items-center">
@@ -46,8 +18,8 @@
 </div>
 <main class="max-w-xs mx-auto mt-8" data-testid="workout-carousel">
   {#if workouts && workouts.length > 0}
-    <WorkoutList {workouts} />
+    <WorkoutCarousel {workouts} />
   {:else}
-    <p>no workouts found</p>
+    <p>No workouts found</p>
   {/if}
 </main>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  export let id: number;
   export let date: string;
   export let workoutType: string;
   export let duration: number;

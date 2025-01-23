@@ -8,7 +8,8 @@
 		"prepack": "svelte-kit sync && svelte-package && publint",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"test": "vitest"
+		"test": "vitest",
+		"seed": "node --no-warnings --loader ts-node/esm prisma/seed.ts"
 	},
 	"files": [
 		"dist",
@@ -38,6 +39,7 @@
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/svelte": "^5.2.6",
 		"@testing-library/user-event": "^14.6.0",
+		"@types/node": "^22.10.7",
 		"@types/pg": "^8.11.10",
 		"autoprefixer": "^10.4.20",
 		"jsdom": "^26.0.0",
@@ -47,7 +49,8 @@
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"tailwindcss": "^3.4.17",
-		"typescript": "^5.0.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.7.3",
 		"vite": "^5.4.11",
 		"vitest": "^3.0.1"
 	},

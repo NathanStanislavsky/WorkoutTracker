@@ -18,7 +18,7 @@
     const result = await res.json();
     if (res.ok) {
       console.log("User signed in successfully:", result);
-      goto('/');
+      goto('/workout');
     } else {
       console.error("Error signing in user:", result.error);
     }

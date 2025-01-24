@@ -25,7 +25,7 @@
   }
 </script>
 
-<div class="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
+<div class="w-1/3 mx-auto p-6 bg-white shadow-md rounded-md">
   <h1 class="text-2xl font-bold text-center mb-6">Sign Up</h1>
   <form class="space-y-4" on:submit={handleSubmit}>
     <div>

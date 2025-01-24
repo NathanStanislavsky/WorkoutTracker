@@ -1,6 +1,6 @@
 <script>
-  import { goto } from '$app/navigation';
-  
+  import { goto } from "$app/navigation";
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -18,14 +18,14 @@
     const result = await res.json();
     if (res.ok) {
       console.log("User signed in successfully:", result);
-      goto('/workout');
+      goto("/workout");
     } else {
       console.error("Error signing in user:", result.error);
     }
   }
 </script>
 
-<div class="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
+<div class="w-1/3 mx-auto p-6 bg-white shadow-md rounded-md">
   <h1 class="text-2xl font-bold text-center mb-6">Sign In</h1>
   <form class="space-y-4" on:submit={handleSubmit}>
     <div>

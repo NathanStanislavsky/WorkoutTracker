@@ -34,6 +34,12 @@ describe('Navbar Component', () => {
     expect(signupLink).toBeInTheDocument();
     expect(signupLink.getAttribute('href')).toBe('/signin');
   });
+
+  it('includes a logout button', () => {
+    const { getByRole } = render(navbar);
+    const logoutButton = getByRole('button', { name: 'Logout' });
+    expect(logoutButton).toBeInTheDocument();
+  });
 });
 
 

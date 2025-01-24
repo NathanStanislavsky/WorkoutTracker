@@ -16,6 +16,7 @@
     const result = await res.json();
     if (res.ok) {
       console.log("Workout added:", result);
+      window.location.reload();
     } else {
       console.error("Error adding workout:", result.error);
     }

@@ -43,7 +43,7 @@ describe("add workout endpoint", () => {
 
     prisma.workout.create.mockResolvedValue(createdWorkout);
 
-    const request = new Request("http://localhost/api/workouts", {
+    const request = new Request("http://localhost/addWorkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

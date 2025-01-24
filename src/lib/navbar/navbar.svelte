@@ -19,5 +19,14 @@
           Home
         </button>
       </a>
+      <!-- Sign up button -->>
+      <a href="/signup" class="ml-auto">
+        <button
+          class="bg-slate-700 hover:bg-slate-600 transition-colors 
+                 px-5 py-2 rounded-md text-white text-2xl font-medium"
+        >
+          Sign Up
+        </button>
+      </a>
     </div>
   </nav>

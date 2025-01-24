@@ -3,7 +3,6 @@ import { POST } from "./+server";
 import { prisma } from "$lib/server/prisma";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '$env/static/private';
 
 describe("POST /login endpoint", () => {
   beforeEach(() => {

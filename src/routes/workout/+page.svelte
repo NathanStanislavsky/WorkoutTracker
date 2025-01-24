@@ -1,5 +1,6 @@
 <script lang="ts">
   import WorkoutCarousel from "$lib/workout carousel/WorkoutCarousel.svelte";
+  import AddWorkout from "$lib/updateWorkouts/addWorkout.svelte";
   import type { PageData } from './$types';
 
   export let data: PageData;
@@ -23,3 +24,4 @@
     <p>No workouts found</p>
   {/if}
 </main>
+<AddWorkout />

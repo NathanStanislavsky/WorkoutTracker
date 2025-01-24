@@ -1,5 +1,17 @@
 <script>
   export let logoUrl = "/workout-logo.png";
+
+  async function handleLogout() {
+    const response = await fetch("/logout", {
+      method: "POST",
+    });
+
+    if (response.ok) {
+      window.location.href = "/";
+    } else {
+      console.error("Logout failed");
+    }
+  }
 </script>
 
 <nav class="bg-slate-800 p-4 h-24 text-white">
@@ -40,6 +52,15 @@
           Sign In
         </button>
       </a>
+      <span class="p-4">
+        <button
+          on:click={handleLogout}
+          class="bg-slate-700 hover:bg-slate-600 transition-colors
+      px-5 py-2 rounded-md text-white text-2xl font-medium"
+        >
+          Logout
+        </button>
+      </span>
     </div>
   </div>
 </nav>

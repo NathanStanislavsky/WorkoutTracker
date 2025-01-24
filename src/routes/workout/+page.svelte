@@ -1,7 +1,7 @@
 <script lang="ts">
   import WorkoutCarousel from "$lib/workout carousel/WorkoutCarousel.svelte";
   import AddWorkout from "$lib/updateWorkouts/addWorkout.svelte";
-  import type { PageData } from './$types';
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 
@@ -14,14 +14,20 @@
   }>;
 </script>
 
-<div class="flex flex-col items-center">
-  <h1 class="text-4xl font-bold p-8">Workouts</h1>
+<div class="flex flex-col min-h-screen">
+  <main class="flex-grow p-8">
+    <div class="flex flex-col md:flex-row gap-8">
+      <div class="flex-1" data-testid="workout-carousel">
+        {#if workouts && workouts.length > 0}
+          <WorkoutCarousel {workouts} />
+        {:else}
+          <p class="text-center text-gray-500">No workouts found</p>
+        {/if}
+      </div>
+
+      <div class="w-full md:w-1/3">
+        <AddWorkout />
+      </div>
+    </div>
+  </main>
 </div>
-<main class="max-w-xs mx-auto mt-8" data-testid="workout-carousel">
-  {#if workouts && workouts.length > 0}
-    <WorkoutCarousel {workouts} />
-  {:else}
-    <p>No workouts found</p>
-  {/if}
-</main>
-<AddWorkout />

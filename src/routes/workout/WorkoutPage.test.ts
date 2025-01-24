@@ -4,12 +4,6 @@ import { render, screen } from "@testing-library/svelte";
 import WorkoutPage from "./+page.svelte";
 
 describe("WorkoutPage", () => {
-  it("renders without crashing and contains a header with 'Workouts'", () => {
-    render(WorkoutPage, { data: { workouts: [] } });
-    const header = screen.getByRole("heading", { name: /Workouts/i });
-    expect(header).toBeInTheDocument();
-  });
-
   it("displays the Workout Carousel component", () => {
     render(WorkoutPage, {
       data: {

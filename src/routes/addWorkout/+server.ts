@@ -23,8 +23,8 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
       data: {
         type,
         date: new Date(date),
-        duration,
-        caloriesBurned,
+        duration: +duration,
+        caloriesBurned: +caloriesBurned,
         userId: decoded.userId,
       },
     });

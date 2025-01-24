@@ -20,6 +20,20 @@ describe('Navbar Component', () => {
     expect(homeLink).toBeInTheDocument();
     expect(homeLink.getAttribute('href')).toBe('/');
   });
+
+  it('includes a signup link with the correct href', () => {
+    const { getByRole } = render(navbar);
+    const signupLink = getByRole('link', { name: 'Sign Up' });
+    expect(signupLink).toBeInTheDocument();
+    expect(signupLink.getAttribute('href')).toBe('/signup');
+  });
+
+  it('includes a signin link with the correct href', () => {
+    const { getByRole } = render(navbar);
+    const signupLink = getByRole('link', { name: 'Sign In' });
+    expect(signupLink).toBeInTheDocument();
+    expect(signupLink.getAttribute('href')).toBe('/signin');
+  });
 });
 
 

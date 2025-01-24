@@ -27,6 +27,13 @@ describe('Navbar Component', () => {
     expect(signupLink).toBeInTheDocument();
     expect(signupLink.getAttribute('href')).toBe('/signup');
   });
+
+  it('includes a signin link with the correct href', () => {
+    const { getByRole } = render(navbar);
+    const signupLink = getByRole('link', { name: 'Sign In' });
+    expect(signupLink).toBeInTheDocument();
+    expect(signupLink.getAttribute('href')).toBe('/signin');
+  });
 });
 
 

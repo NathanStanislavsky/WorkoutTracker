@@ -25,7 +25,7 @@
   }
 </script>
 
-<div class="flex-grow flex items-center justify-center bg-gray-100">
+<div class="flex-grow flex items-center justify-center">
   <div class="w-1/3 mx-auto p-6 bg-white shadow-md rounded-md">
     <h1 class="text-2xl font-bold text-center mb-6">Sign In</h1>
     <form class="space-y-4" on:submit={handleSubmit}>

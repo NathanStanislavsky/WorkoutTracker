@@ -6,6 +6,7 @@
   export let calories: number;
 
   import EditWorkout from "$lib/edit-workout/EditWorkout.svelte";
+  import DeleteWorkout from "$lib/DeleteWorkout/DeleteWorkout.svelte";
 </script>
 
 <div
@@ -15,33 +16,37 @@
     <h2 class="text-lg font-semibold">
       {workoutType}
     </h2>
-    
+
     <div class="flex items-center space-x-2">
       <span class="text-xs uppercase tracking-widest text-gray-400">
         {date}
       </span>
-      <div>
+
+      <div class="w-20">
         <EditWorkout />
       </div>
     </div>
   </div>
-  
-  <div class="flex items-center justify-between">
+
+  <div class="flex items-center justify-between mb-4">
     <div>
-      <p class="text-sm text-gray-300">
-        Duration
-      </p>
+      <p class="text-sm text-gray-300">Duration</p>
       <p class="text-lg font-bold">
         {duration} min
       </p>
     </div>
-    <div>
-      <p class="text-sm text-gray-300">
-        Calories
-      </p>
-      <p class="text-lg font-bold">
-        {calories}
-      </p>
+
+    <div class="flex items-center space-x-2">
+      <div>
+        <p class="text-sm text-gray-300">Calories</p>
+        <p class="text-lg font-bold">
+          {calories}
+        </p>
+      </div>
+
+      <div class="w-20">
+        <DeleteWorkout />
+      </div>
     </div>
   </div>
 </div>

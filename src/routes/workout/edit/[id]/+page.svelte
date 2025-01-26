@@ -10,7 +10,7 @@
   let workoutCalories = workout.caloriesBurned;
 </script>
 
-<div class="flex-grow flex items-center justify-center bg-gray-100">
+<div class="flex-grow flex items-center justify-center">
   <form
     method="post"
     class="max-w-md mx-auto p-6 bg-slate-800 shadow-md rounded"

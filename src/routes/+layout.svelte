@@ -3,8 +3,9 @@
   import Navbar from "../lib/navbar/navbar.svelte";
 </script>
 
-<div class="flex flex-col min-h-screen">
+
+<div class="flex flex-col h-screen">
   <Navbar logoUrl="/workout-logo.png" />
 
-  <slot />
+    <slot />
 </div>

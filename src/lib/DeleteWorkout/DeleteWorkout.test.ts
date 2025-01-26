@@ -8,4 +8,18 @@ describe('Delete workout button component', () => {
         const { getByText } = render(DeleteWorkout);
         expect(getByText('Delete')).toBeInTheDocument();
     });
+
+    it('renders correctly with the provided id prop', () => {
+        const mockId = 123;
+
+        const { getByRole, getByDisplayValue } = render(DeleteWorkout, { props: { id: mockId } });
+    
+        const button = getByRole('button', { name: /delete/i });
+        expect(button).toBeInTheDocument();
+    
+        const hiddenInput = getByDisplayValue(mockId.toString());
+        expect(hiddenInput).toBeInTheDocument();
+        expect(hiddenInput).toHaveAttribute('name', 'id');
+        expect(hiddenInput).toHaveAttribute('type', 'hidden');
+      });
 });

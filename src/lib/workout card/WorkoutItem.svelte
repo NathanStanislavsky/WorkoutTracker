@@ -4,6 +4,8 @@
   export let workoutType: string;
   export let duration: number;
   export let calories: number;
+
+  import EditWorkout from "$lib/edit-workout/EditWorkout.svelte";
 </script>
 
 <div
@@ -13,9 +15,15 @@
     <h2 class="text-lg font-semibold">
       {workoutType}
     </h2>
-    <span class="text-xs uppercase tracking-widest text-gray-400">
-      {date}
-    </span>
+    
+    <div class="flex items-center space-x-2">
+      <span class="text-xs uppercase tracking-widest text-gray-400">
+        {date}
+      </span>
+      <div>
+        <EditWorkout />
+      </div>
+    </div>
   </div>
   
   <div class="flex items-center justify-between">

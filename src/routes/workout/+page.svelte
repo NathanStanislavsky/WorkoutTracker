@@ -2,6 +2,7 @@
   import WorkoutCarousel from "$lib/workout carousel/WorkoutCarousel.svelte";
   import AddWorkout from "$lib/updateWorkouts/addWorkout.svelte";
   import type { PageData } from "./$types";
+  import EditWorkout from "$lib/edit-workout/EditWorkout.svelte";
 
   export let data: PageData;
 
@@ -29,5 +30,6 @@
         <AddWorkout />
       </div>
     </div>
+    <EditWorkout />
   </main>
 </div>

@@ -21,9 +21,8 @@
       <span class="text-xs uppercase tracking-widest text-gray-400">
         {date}
       </span>
-
       <div class="w-20">
-        <EditWorkout />
+        <EditWorkout {id} />
       </div>
     </div>
   </div>
@@ -43,7 +42,6 @@
           {calories}
         </p>
       </div>
-
       <div class="w-20">
         <DeleteWorkout id={id} />
       </div>

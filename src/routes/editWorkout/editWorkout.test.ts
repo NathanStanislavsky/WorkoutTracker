@@ -9,4 +9,12 @@ describe("Edit workout page", () => {
     const heading = screen.getByRole("heading", { name: /edit workout/i });
     expect(heading).toBeInTheDocument();
   });
+
+  it('renders the form with the correct fields', () => {
+    const { getByLabelText } = render(EditWorkoutPage);
+    expect(getByLabelText('Type')).toBeInTheDocument();
+    expect(getByLabelText('Date')).toBeInTheDocument();
+    expect(getByLabelText('Duration (minutes)')).toBeInTheDocument();
+    expect(getByLabelText('Calories Burned')).toBeInTheDocument();
+  });
 });

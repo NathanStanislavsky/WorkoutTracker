@@ -45,7 +45,7 @@
       </div>
 
       <div class="w-20">
-        <DeleteWorkout />
+        <DeleteWorkout id={id} />
       </div>
     </div>
   </div>

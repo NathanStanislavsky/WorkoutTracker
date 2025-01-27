@@ -11,7 +11,7 @@
 </script>
 
 <div
-  class="overflow-y-auto h-1/2 flex flex-col space-y-4 p-4 snap-y snap-mandatory"
+  class="h-3/4 overflow-y-auto flex flex-col space-y-4 p-4 snap-y snap-mandatory"
 >
   {#each workouts as workout}
     <div class="snap-start">

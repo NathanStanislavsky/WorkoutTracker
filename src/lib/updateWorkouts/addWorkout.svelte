@@ -62,7 +62,7 @@
   </div>
 
   <div class="mb-4">
-    <label for="calories-burned" class="blockmb-2 text-white"
+    <label for="calories-burned" class="block mb-2 text-white"
       >Calories Burned</label
     >
     <input

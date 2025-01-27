@@ -14,20 +14,16 @@
   }>;
 </script>
 
-<div class="flex flex-col min-h-screen">
-  <main class="flex-grow p-8">
-    <div class="flex flex-col md:flex-row gap-8">
-      <div class="flex-1" data-testid="workout-carousel">
-        {#if workouts && workouts.length > 0}
-          <WorkoutCarousel {workouts} />
-        {:else}
-          <p class="text-center text-gray-500">No workouts found</p>
-        {/if}
-      </div>
+<main class="flex flex-1 min-h-0 p-8 gap-8">
+  <section class="flex-1 min-h-0" data-testid="workout-carousel">
+    {#if workouts.length > 0}
+      <WorkoutCarousel {workouts} />
+    {:else}
+      <p class="text-center text-gray-500">No workouts found</p>
+    {/if}
+  </section>
 
-      <div class="w-full md:w-1/3">
-        <AddWorkout />
-      </div>
-    </div>
-  </main>
-</div>
+  <aside class="w-full md:w-1/3">
+    <AddWorkout />
+  </aside>
+</main>

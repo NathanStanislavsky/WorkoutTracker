@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -16,14 +18,14 @@
     const result = await res.json();
     if (res.ok) {
       console.log("Workout added:", result);
-      window.location.reload();
+      goto("/workout");
     } else {
       console.error("Error adding workout:", result.error);
     }
   }
 </script>
 
-<form class="max-w-md mx-auto p-6 bg-slate-800 shadow-md rounded" on:submit={handleSubmit}>
+<form class="w-full max-w-md p-6 bg-slate-800 shadow-md rounded" on:submit={handleSubmit}>
   <h2 class="text-2xl mb-4 text-white">Add a New Workout</h2>
 
   <div class="mb-4">

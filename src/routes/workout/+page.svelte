@@ -22,8 +22,4 @@
       <p class="text-center text-gray-500">No workouts found</p>
     {/if}
   </section>
-
-  <aside class="w-full md:w-1/3">
-    <AddWorkout />
-  </aside>
 </main>

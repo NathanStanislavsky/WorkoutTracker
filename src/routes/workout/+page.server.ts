@@ -39,24 +39,3 @@ export const load: PageServerLoad = async ({ locals }) => {
     };
   }
 };
-
-export const actions: Actions = {
-  deleteWorkout: async ({ request, locals }) => {
-    if (!locals.user) {
-      return json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    const formData = await request.formData();
-    const workoutId = formData.get("id") as string;
-
-    try {
-      await prisma.workout.delete({
-        where: {
-          id: Number(workoutId),
-        },
-      });
-    } catch (error) {
-      console.error("Error deleting workout:", error);
-    }
-  },
-};

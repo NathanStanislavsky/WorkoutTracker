@@ -5,8 +5,6 @@
   export let duration: number;
   export let calories: number;
 
-  import EditWorkout from "$lib/EditWorkout/EditWorkout.svelte";
-  import DeleteWorkout from "$lib/DeleteWorkout/DeleteWorkout.svelte";
   import ThreeBarMenu from "$lib/ThreeBarMenu/ThreeBarMenu.svelte";
 </script>
 

@@ -21,9 +21,7 @@
         {date}
       </span>
     </div>
-  </div>
 
-  <div class="flex items-center justify-between mb-4">
     <div>
       <p class="text-sm text-gray-300">Duration</p>
       <p class="text-lg font-bold">
@@ -41,8 +39,7 @@
     </div>
 
     <div class="w-20">
-      <ThreeBarMenu id={id}/>
+      <ThreeBarMenu {id} />
     </div>
-
   </div>
 </div>

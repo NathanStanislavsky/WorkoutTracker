@@ -9,4 +9,17 @@ describe('ThreeBarMenu component', () => {
 
     expect(queryByRole('menu')).not.toBeInTheDocument();
   });
+
+  it('should toggle the menu when the button is clicked', async () => {
+    const { getByLabelText, queryByRole } = render(ThreeBarMenu);
+    const toggleButton = getByLabelText('Toggle menu');
+
+    expect(queryByRole('menu')).not.toBeInTheDocument();
+
+    await fireEvent.click(toggleButton);
+    expect(queryByRole('menu')).toBeInTheDocument();
+
+    await fireEvent.click(toggleButton);
+    expect(queryByRole('menu')).not.toBeInTheDocument();
+  });
 });

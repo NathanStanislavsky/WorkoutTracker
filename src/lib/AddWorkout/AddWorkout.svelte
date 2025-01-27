@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -16,7 +18,7 @@
     const result = await res.json();
     if (res.ok) {
       console.log("Workout added:", result);
-      window.location.reload();
+      goto("/workout");
     } else {
       console.error("Error adding workout:", result.error);
     }

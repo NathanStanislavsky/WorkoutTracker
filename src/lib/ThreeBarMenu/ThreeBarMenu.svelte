@@ -22,6 +22,18 @@
         class="absolute right-0 mt-2 w-36 bg-slate-700 border border-gray-200 rounded shadow-md"
         role="menu"
       >
+        <button 
+          class="block w-full px-4 py-2 text-left hover:bg-slate-500 focus:outline-none"
+          role="menuitem"
+        >
+          Edit
+        </button>
+        <button 
+          class="block w-full px-4 py-2 text-left hover:bg-slate-500 focus:outline-none text-white"
+          role="menuitem"
+        >
+          Delete
+        </button>
       </div>
     {/if}
   </div>

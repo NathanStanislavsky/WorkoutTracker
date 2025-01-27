@@ -22,4 +22,18 @@ describe('ThreeBarMenu component', () => {
     await fireEvent.click(toggleButton);
     expect(queryByRole('menu')).not.toBeInTheDocument();
   });
+
+  it('should call the edit handler when "Edit" is clicked', async () => {
+    const { getByLabelText, getByText } = render(ThreeBarMenu);
+    const toggleButton = getByLabelText('Toggle menu');
+
+    await fireEvent.click(toggleButton);
+
+    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
+
+    await fireEvent.click(getByText('Edit'));
+    expect(alertSpy).toHaveBeenCalledWith('Edit action');
+
+    alertSpy.mockRestore();
+  });
 });

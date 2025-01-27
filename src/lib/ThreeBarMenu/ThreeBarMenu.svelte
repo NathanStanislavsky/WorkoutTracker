@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+  export let id: number;
+
   let isOpen = false;
 
   function toggleMenu() {
@@ -6,7 +8,7 @@
   }
 
   function handleEdit() {
-    alert("Edit action");
+    window.location.href = `/workout/edit/${id}`;
   }
 </script>
 

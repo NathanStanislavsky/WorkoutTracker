@@ -22,9 +22,6 @@
       <span class="text-xs uppercase tracking-widest text-gray-400">
         {date}
       </span>
-      <div class="w-20">
-        <EditWorkout {id} />
-      </div>
     </div>
   </div>
 
@@ -49,7 +46,7 @@
     </div>
 
     <div class="w-20">
-      <ThreeBarMenu />
+      <ThreeBarMenu id={id}/>
     </div>
 
   </div>

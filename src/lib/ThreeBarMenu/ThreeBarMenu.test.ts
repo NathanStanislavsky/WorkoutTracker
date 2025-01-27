@@ -23,17 +23,21 @@ describe('ThreeBarMenu component', () => {
     expect(queryByRole('menu')).not.toBeInTheDocument();
   });
 
-  it('should call the edit handler when "Edit" is clicked', async () => {
-    const { getByLabelText, getByText } = render(ThreeBarMenu);
+  it('should navigate to /workout/edit/123 when "Edit" is clicked', async () => {
+    const { getByLabelText, getByText } = render(ThreeBarMenu, { props: { id: 123 } });
+  
     const toggleButton = getByLabelText('Toggle menu');
-
     await fireEvent.click(toggleButton);
-
-    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
-
+  
+    const originalLocation = window.location;
+  
+    delete (window as any).location;
+    window.location = { href: '' } as Location; 
+  
     await fireEvent.click(getByText('Edit'));
-    expect(alertSpy).toHaveBeenCalledWith('Edit action');
 
-    alertSpy.mockRestore();
+    expect(window.location.href).toBe('/workout/edit/123');
+  
+    window.location = originalLocation;
   });
 });

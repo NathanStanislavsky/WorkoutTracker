@@ -40,9 +40,6 @@
           {calories}
         </p>
       </div>
-      <div class="w-20">
-        <DeleteWorkout id={id} />
-      </div>
     </div>
 
     <div class="w-20">

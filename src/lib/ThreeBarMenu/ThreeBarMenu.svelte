@@ -10,6 +10,24 @@
   function handleEdit() {
     window.location.href = `/workout/edit/${id}`;
   }
+
+  async function handleDelete() {
+    const confirmed = confirm('Are you sure you want to delete this workout?');
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`/workout/delete/${id}`, { method: 'DELETE' });
+      if (!res.ok) {
+        alert('Failed to delete workout.');
+        return;
+      }
+
+      window.location.reload();
+    } catch (e) {
+      console.error(e);
+      alert('An error occurred while deleting the workout.');
+    }
+  }
 </script>
 
 <div class="relative inline-block text-left">
@@ -36,6 +54,7 @@
         Edit
       </button>
       <button
+        on:click={handleDelete}
         class="block w-full px-4 py-2 text-left hover:bg-slate-500 focus:outline-none text-white"
         role="menuitem"
       >

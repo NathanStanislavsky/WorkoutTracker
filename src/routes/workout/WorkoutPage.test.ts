@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/svelte";
+import { queryByRole, render, screen } from "@testing-library/svelte";
 import WorkoutPage from "./+page.svelte";
 
 describe("WorkoutPage", () => {
@@ -51,5 +51,12 @@ describe("WorkoutPage", () => {
     render(WorkoutPage, { data: { workouts: [] } });
 
     expect(screen.getByText(/no workouts found/i)).toBeInTheDocument();
+  });
+
+  it('displays add workout button', () => {
+    render(WorkoutPage, { data: { workouts: [] } });
+
+    const addWorkoutButton = screen.getByTestId("add-workout-button");
+    expect(addWorkoutButton).toBeInTheDocument();
   });
 });

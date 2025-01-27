@@ -7,6 +7,7 @@
 
   import EditWorkout from "$lib/EditWorkout/EditWorkout.svelte";
   import DeleteWorkout from "$lib/DeleteWorkout/DeleteWorkout.svelte";
+  import ThreeBarMenu from "$lib/ThreeBarMenu/ThreeBarMenu.svelte";
 </script>
 
 <div
@@ -46,5 +47,10 @@
         <DeleteWorkout id={id} />
       </div>
     </div>
+
+    <div class="w-20">
+      <ThreeBarMenu />
+    </div>
+
   </div>
 </div>

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import WorkoutCarousel from "$lib/workout carousel/WorkoutCarousel.svelte";
-  import AddWorkout from "$lib/updateWorkouts/addWorkout.svelte";
+  import WorkoutCarousel from "$lib/Carousel/Carousel.svelte";
+  import AddWorkout from "$lib/AddWorkout/AddWorkout.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;

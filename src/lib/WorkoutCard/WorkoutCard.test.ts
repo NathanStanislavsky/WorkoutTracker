@@ -1,7 +1,7 @@
 import { render } from "@testing-library/svelte";
 import '@testing-library/jest-dom';
 import { describe, it, expect } from "vitest";
-import WorkoutItem from "./WorkoutItem.svelte";
+import WorkoutItem from "./WorkoutCard.svelte";
 
 describe("WorkoutItem Component", () => {
   it("renders workout details correctly", () => {

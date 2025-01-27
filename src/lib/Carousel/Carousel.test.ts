@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/svelte";
 import "@testing-library/jest-dom";
 import { describe, it, expect } from "vitest";
-import WorkoutList from "./WorkoutCarousel.svelte";
+import WorkoutList from "./Carousel.svelte";
 
 describe("Workout Carousel Component", () => {
   it("renders a list of workout items", () => {

@@ -1,6 +1,6 @@
 <script>
   import "../app.css";
-  import Navbar from "../lib/navbar/navbar.svelte";
+  import Navbar from "../lib/Navbar/Navbar.svelte";
 </script>
 
 <div class="flex flex-col h-screen overflow-hidden">

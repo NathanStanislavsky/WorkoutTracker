@@ -1,6 +1,6 @@
 <script lang="ts">
-  import WorkoutItem from "../workout card/WorkoutItem.svelte";
-
+  import WorkoutItem from "../WorkoutCard/WorkoutCard.svelte";
+  
   export let workouts: {
     id: number;
     date: string;

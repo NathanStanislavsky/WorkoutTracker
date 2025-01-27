@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/svelte';
 import { describe, expect, it } from 'vitest';
-import navbar from './navbar.svelte';
+import navbar from './Navbar.svelte';
 
 describe('Navbar Component', () => {
   it('renders navbar', () => {

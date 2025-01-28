@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { generateCalendar } from "./generateCalendar.ts";
+import { generateCalendar, getPrevMonth } from "./generateCalendar.ts";
 
 describe("generateCalendar", () => {
   it("generates calendar with no previous month days", () => {
@@ -90,5 +90,15 @@ describe("generateCalendar", () => {
     // First day of March
     expect(calendar[33]).toEqual({ day: 1, currentMonth: false });
     expect(calendar[34]).toEqual({ day: 2, currentMonth: false });
+  });
+
+  it("correctly returns December of the previous year when current month is January", () => {
+    const result = getPrevMonth(0, 2024); // January 2024
+    expect(result).toEqual({ month: 11, year: 2023 }); // December 2023
+  });
+
+  it("correctly returns the previous month and same year when current month is not January", () => {
+    const result = getPrevMonth(5, 2024); // June 2024
+    expect(result).toEqual({ month: 4, year: 2024 }); // May 2024
   });
 });

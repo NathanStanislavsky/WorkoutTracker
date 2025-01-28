@@ -3,6 +3,8 @@
   let currentMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
 
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
   function getMonthName(monthIndex) {
     const monthNames = [
       "January",
@@ -28,5 +30,11 @@
       {getMonthName(currentMonth)}
       {currentYear}
     </h2>
+  </div>
+
+  <div class="grid grid-cols-7 gap-2 text-center font-medium text-gray-700">
+    {#each daysOfWeek as day}
+      <div>{day}</div>
+    {/each}
   </div>
 </div>

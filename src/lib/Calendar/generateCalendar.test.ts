@@ -91,7 +91,9 @@ describe("generateCalendar", () => {
     expect(calendar[33]).toEqual({ day: 1, currentMonth: false });
     expect(calendar[34]).toEqual({ day: 2, currentMonth: false });
   });
+});
 
+describe("getPrevMonth", () => {
   it("correctly returns December of the previous year when current month is January", () => {
     const result = getPrevMonth(0, 2024); // January 2024
     expect(result).toEqual({ month: 11, year: 2023 }); // December 2023

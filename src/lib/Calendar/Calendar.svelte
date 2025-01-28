@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { generateCalendar, getPrevMonth } from "./generateCalendar.ts";
+  import { generateCalendar, getNextMonth, getPrevMonth } from "./generateCalendar.ts";
 
   let currentDate = new Date();
   let currentMonth = currentDate.getMonth();
@@ -38,14 +38,35 @@
     currentYear = year;
     calendarDays = generateCalendar(currentMonth, currentYear);
   }
+
+  function navigateToNextMonth() {
+    const { month, year } = getNextMonth(currentMonth, currentYear);
+    currentMonth = month;
+    currentYear = year;
+    calendarDays = generateCalendar(currentMonth, currentYear);
+  }
 </script>
 
 <div class="max-w-md mx-auto p-4">
   <div class="flex justify-between items-center mb-4">
+    <button
+      on:click={navigateToPrevMonth}
+      class="p-2 bg-gray-200 rounded hover:bg-gray-300 focus:outline-none focus:ring"
+      aria-label="Previous Month"
+    >
+      &lt;
+    </button>
     <h2 class="text-xl font-semibold">
       {getMonthName(currentMonth)}
       {currentYear}
     </h2>
+    <button
+      on:click={navigateToNextMonth}
+      class="p-2 bg-gray-200 rounded hover:bg-gray-300 focus:outline-none focus:ring"
+      aria-label="Previous Month"
+    >
+      &gt;
+    </button>
   </div>
 
   <div class="grid grid-cols-7 gap-2 text-center font-medium text-gray-700">

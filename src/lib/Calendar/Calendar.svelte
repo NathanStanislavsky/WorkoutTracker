@@ -1,6 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { generateCalendar, getNextMonth, getPrevMonth } from "./generateCalendar.ts";
+  import {
+    generateCalendar,
+    getNextMonth,
+    getPrevMonth,
+  } from "./generateCalendar.ts";
 
   let currentDate = new Date();
   let currentMonth = currentDate.getMonth();
@@ -9,6 +13,8 @@
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   let calendarDays = [];
+
+  let selectedDate = null;
 
   onMount(() => {
     calendarDays = generateCalendar(currentMonth, currentYear);
@@ -45,6 +51,12 @@
     currentYear = year;
     calendarDays = generateCalendar(currentMonth, currentYear);
   }
+
+  function selectDate(date) {
+    if (date.currentMonth) {
+      selectedDate = new Date(currentYear, currentMonth, date.day);
+    }
+  }
 </script>
 
 <div class="max-w-md mx-auto p-4">
@@ -77,13 +89,28 @@
 
   <div class="grid grid-cols-7 gap-2 mt-2">
     {#each calendarDays as date}
-      <div
-        class={`p-2 text-center rounded ${
-          date.currentMonth ? "bg-white" : "bg-gray-100 text-gray-400"
-        } hover:bg-blue-100 cursor-pointer`}
+      <button
+        on:click={() => selectDate(date)}
+        class={`p-2 text-center rounded 
+          ${
+            selectedDate &&
+            selectedDate.getDate() === date.day &&
+            selectedDate.getMonth() === currentMonth
+              ? "bg-blue-500 text-white"
+              : "hover:bg-blue-100"
+          }
+        `}
+        type="button"
+        aria-label="Select Date"
       >
         {date.day}
-      </div>
+      </button>
     {/each}
   </div>
+
+  {#if selectedDate}
+    <div class="mt-4 p-2 bg-blue-100 rounded">
+      Selected Date: {selectedDate.toDateString()}
+    </div>
+  {/if}
 </div>

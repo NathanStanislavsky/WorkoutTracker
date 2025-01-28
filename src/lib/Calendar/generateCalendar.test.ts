@@ -110,4 +110,9 @@ describe("getNextMonth", () => {
     const result = getNextMonth(11, 2024); // December 2024
     expect(result).toEqual({ month: 0, year: 2025 }); // January 2025
   });
+
+  it('correctly return the next month and same year when current month is not December', () => {
+    const result = getNextMonth(5, 2024); // June 2024
+    expect(result).toEqual({ month: 6, year: 2024 }); // July 2024
+  });
 });

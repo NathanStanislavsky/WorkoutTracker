@@ -49,3 +49,9 @@ export function getPrevMonth(currentMonth: number, currentYear: number) {
     return { month: currentMonth - 1, year: currentYear };
   }
 }
+
+export function getNextMonth(currentMonth: number, currentYear: number) {
+  if (currentMonth === 11) {
+    return { month: 0, year: currentYear + 1 };
+  }
+}

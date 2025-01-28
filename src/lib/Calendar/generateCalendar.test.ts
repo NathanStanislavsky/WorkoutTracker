@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { generateCalendar, getPrevMonth } from "./generateCalendar.ts";
+import { generateCalendar, getNextMonth, getPrevMonth } from "./generateCalendar.ts";
 
 describe("generateCalendar", () => {
   it("generates calendar with no previous month days", () => {

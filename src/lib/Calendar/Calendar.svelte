@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { generateCalendar } from "./generateCalendar.ts";
+  import { generateCalendar, getPrevMonth } from "./generateCalendar.ts";
 
   let currentDate = new Date();
   let currentMonth = currentDate.getMonth();
@@ -30,6 +30,13 @@
       "December",
     ];
     return monthNames[monthIndex];
+  }
+
+  function navigateToPrevMonth() {
+    const { month, year } = getPrevMonth(currentMonth, currentYear);
+    currentMonth = month;
+    currentYear = year;
+    calendarDays = generateCalendar(currentMonth, currentYear);
   }
 </script>
 

@@ -92,6 +92,7 @@
       <button
         on:click={() => selectDate(date)}
         class={`p-2 text-center rounded 
+          ${date.currentMonth ? "bg-lightblue" : "bg-gray-100 text-black"}
           ${
             selectedDate &&
             selectedDate.getDate() === date.day &&

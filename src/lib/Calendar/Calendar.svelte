@@ -59,7 +59,7 @@
   }
 </script>
 
-<div class="max-w-md mx-auto p-4">
+<div class="max-w-md mx-auto p-4 bg-slate-800 p-10">
   <div class="flex justify-between items-center mb-4">
     <button
       on:click={navigateToPrevMonth}
@@ -68,7 +68,7 @@
     >
       &lt;
     </button>
-    <h2 class="text-xl font-semibold">
+    <h2 class="text-xl font-semibold text-white">
       {getMonthName(currentMonth)}
       {currentYear}
     </h2>
@@ -81,7 +81,7 @@
     </button>
   </div>
 
-  <div class="grid grid-cols-7 gap-2 text-center font-medium text-gray-700">
+  <div class="grid grid-cols-7 gap-2 text-center font-medium text-white">
     {#each daysOfWeek as day}
       <div>{day}</div>
     {/each}
@@ -92,13 +92,13 @@
       <button
         on:click={() => selectDate(date)}
         class={`p-2 text-center rounded 
-          ${date.currentMonth ? "bg-lightblue" : "bg-gray-100 text-black"}
+          ${date.currentMonth ? "bg-lightblue text-white" : "bg-gray-100 text-black"}
           ${
             selectedDate &&
             selectedDate.getDate() === date.day &&
             selectedDate.getMonth() === currentMonth
               ? "bg-blue-500 text-white"
-              : "hover:bg-blue-100"
+              : "hover:bg-gray-500"
           }
         `}
         type="button"

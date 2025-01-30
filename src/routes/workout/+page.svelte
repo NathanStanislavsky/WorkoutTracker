@@ -37,5 +37,7 @@
     +
   </button>
 
-  <Calendar />
+  <div class="min-h-0">
+    <Calendar />
+  </div>
 </main>

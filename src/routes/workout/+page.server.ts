@@ -31,11 +31,13 @@ export const load: PageServerLoad = async ({ locals }) => {
 
     return {
       workouts: transformedWorkouts,
+      user: user,
     };
   } catch (error) {
     console.error("Error fetching workouts:", error);
     return {
       workouts: [],
+      user: user,
     };
   }
 };

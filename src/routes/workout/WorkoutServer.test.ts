@@ -67,6 +67,6 @@ describe("load function for workout page", () => {
         date: "desc",
       },
     });
-    expect(result).toEqual({ workouts: expectedTransformedWorkouts });
+    expect(result).toEqual({ workouts: expectedTransformedWorkouts, user: mockUser });
   });
 });

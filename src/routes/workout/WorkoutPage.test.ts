@@ -16,6 +16,7 @@ describe("WorkoutPage", () => {
             calories: 250,
           },
         ],
+        user: { id: 1, name: "Test User", email: "test@example.com" },
       },
     });
 
@@ -41,20 +42,26 @@ describe("WorkoutPage", () => {
       },
     ];
 
-    render(WorkoutPage, { data: { workouts } });
+    const mockUser = { id: 1, name: "Test User", email: "test@example.com" };
+
+    render(WorkoutPage, { data: { workouts, user: mockUser }});
 
     expect(screen.getByText("Push")).toBeInTheDocument();
     expect(screen.getByText("Leg")).toBeInTheDocument();
   });
 
   it("shows a message if there are no workouts", () => {
-    render(WorkoutPage, { data: { workouts: [] } });
+    const mockUser = { id: 1, name: "Test User", email: "test@example.com" };
+
+    render(WorkoutPage, { data: { workouts: [], user: mockUser } });
 
     expect(screen.getByText(/no workouts found/i)).toBeInTheDocument();
   });
 
-  it('displays add workout button', () => {
-    render(WorkoutPage, { data: { workouts: [] } });
+  it("displays add workout button", () => {
+    const mockUser = { id: 1, name: "Test User", email: "test@example.com" };
+
+    render(WorkoutPage, { data: { workouts: [], user: mockUser } });
 
     const addWorkoutButton = screen.getByTestId("add-workout-button");
     expect(addWorkoutButton).toBeInTheDocument();

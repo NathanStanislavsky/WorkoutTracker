@@ -43,6 +43,19 @@
         />
       </div>
       <div>
+        <label for="password" class="block text-sm font-medium text-gray-700"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          placeholder="Enter a password"
+        />
+      </div>
+      <div>
         <label for="weight" class="block text-sm font-medium text-gray-700"
           >Weight</label
         >
@@ -79,19 +92,6 @@
           required
           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
           placeholder="Enter an email"
-        />
-      </div>
-      <div>
-        <label for="password" class="block text-sm font-medium text-gray-700"
-          >Password</label
-        >
-        <input
-          type="password"
-          id="password"
-          name="password"
-          required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-          placeholder="Enter a password"
         />
       </div>
       <div>

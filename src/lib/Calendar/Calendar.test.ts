@@ -5,14 +5,13 @@ import Calendar from "./Calendar.svelte";
 
 describe("Calendar component", () => {
   beforeEach(() => {
-    vi.useFakeTimers();
-
     const mockedDate = new Date(2024, 11);
     vi.setSystemTime(mockedDate);
   });
 
   afterEach(() => {
     vi.useRealTimers();
+    vi.resetAllMocks();
   });
 
   it("Renders calendar component with December 2024", () => {
@@ -21,7 +20,9 @@ describe("Calendar component", () => {
     const currentMonth = "December";
     const currentYear = "2024";
 
-    expect(screen.getByText(`${currentMonth} ${currentYear}`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`${currentMonth} ${currentYear}`)
+    ).toBeInTheDocument();
   });
 
   it("Renders calendar component with days of the week", () => {

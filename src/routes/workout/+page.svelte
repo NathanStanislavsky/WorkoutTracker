@@ -2,6 +2,7 @@
   import WorkoutCarousel from "$lib/Carousel/Carousel.svelte";
   import type { PageData } from "./$types";
   import { goto } from "$app/navigation";
+  import Calendar from "$lib/Calendar/Calendar.svelte";
 
   export let data: PageData;
 
@@ -35,4 +36,8 @@
   >
     +
   </button>
+
+  <div class="min-h-0">
+    <Calendar />
+  </div>
 </main>

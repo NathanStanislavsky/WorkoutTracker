@@ -11,4 +11,13 @@ export const GET: RequestHandler = async ({ params, locals }) => {
       headers: { 'Content-Type': 'application/json' },
     });
   }
+
+  const userId = locals.user?.id;
+
+  if (!userId) {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 };

@@ -25,11 +25,11 @@
   }
 </script>
 
-<main class="flex min-h-0 p-8 gap-8">
-  <div>
-    <h1 class="text-3xl font-bold">Welcome back, {user.name}!</h1>
-  </div>
+<div class="p-8 ml-5">
+  <h1 class="text-3xl font-bold">Welcome back, {user.name}!</h1>
+</div>
 
+<main class="flex min-h-0 p-8 gap-8">
   <section class="flex-1 min-h-0" data-testid="workout-carousel">
     {#if workouts.length > 0}
       <WorkoutCarousel {workouts} />

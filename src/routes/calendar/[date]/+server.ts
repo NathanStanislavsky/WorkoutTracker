@@ -20,28 +20,34 @@ export const GET: RequestHandler = async ({ params, locals }) => {
       headers: { "Content-Type": "application/json" },
     });
   }
+  try {
+    const startOfDay = new Date(selectedDate.setHours(0, 0, 0, 0));
+    const endOfDay = new Date(selectedDate.setHours(23, 59, 59, 999));
 
-  const startOfDay = new Date(selectedDate.setHours(0, 0, 0, 0));
-  const endOfDay = new Date(selectedDate.setHours(23, 59, 59, 999));
+    startOfDay.setDate(startOfDay.getDate() - 1);
+    endOfDay.setDate(endOfDay.getDate() - 1);
 
-  startOfDay.setDate(startOfDay.getDate() - 1);
-  endOfDay.setDate(endOfDay.getDate() - 1);
-
-  const workouts = await prisma.workout.findMany({
-    where: {
-      userId: userId,
-      date: {
-        gte: startOfDay,
-        lte: endOfDay,
+    const workouts = await prisma.workout.findMany({
+      where: {
+        userId: userId,
+        date: {
+          gte: startOfDay,
+          lte: endOfDay,
+        },
       },
-    },
-    orderBy: {
-      date: "asc",
-    },
-  });
+      orderBy: {
+        date: "asc",
+      },
+    });
 
-  return new Response(JSON.stringify(workouts), {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-  });
+    return new Response(JSON.stringify(workouts), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: (error as Error).message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 };

@@ -59,14 +59,13 @@ describe("GET /api/workouts/[date]", () => {
 
   it("should return 400 for an invalid date format", async () => {
     const invalidDate = "invalid-date";
-    const requestHandler = GET;
 
     const context = {
       params: { date: invalidDate },
       locals: { user: { id: "user1" } },
     };
 
-    const response = await requestHandler(context as any);
+    const response = await GET(context as any);
 
     expect(prisma.workout.findMany).not.toHaveBeenCalled();
     expect(response.status).toBe(400);
@@ -75,14 +74,12 @@ describe("GET /api/workouts/[date]", () => {
   });
 
   it("should return 401 when user is not authenticated", async () => {
-    const requestHandler = GET;
-
     const context = {
       params: { date: mockDate },
       locals: {},
     };
 
-    const response = await requestHandler(context as any);
+    const response = await GET(context as any);
 
     expect(prisma.workout.findMany).not.toHaveBeenCalled();
     expect(response.status).toBe(401);

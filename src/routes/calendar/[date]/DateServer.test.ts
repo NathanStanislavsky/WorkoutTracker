@@ -12,6 +12,8 @@ vi.mock("$lib/server/prisma", () => ({
 }));
 
 describe("GET /api/workouts/[date]", () => {
+  const mockDate = "2023-09-15";
+
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -31,5 +33,21 @@ describe("GET /api/workouts/[date]", () => {
     expect(response.status).toBe(400);
     const responseBody = await response.json();
     expect(responseBody).toEqual({ error: "Invalid date format" });
+  });
+
+  it("should return 401 when user is not authenticated", async () => {
+    const requestHandler = GET;
+
+    const context = {
+      params: { date: mockDate },
+      locals: {},
+    };
+
+    const response = await requestHandler(context as any);
+
+    expect(prisma.workout.findMany).not.toHaveBeenCalled();
+    expect(response.status).toBe(401);
+    const responseBody = await response.json();
+    expect(responseBody).toEqual({ error: "Unauthorized" });
   });
 });

@@ -25,7 +25,20 @@ model Workout {
   date          DateTime
   duration      Int      // Duration in minutes
   caloriesBurned Int
+  exercises     Exercise[] // A one-to-many relationship with exercises.
   
   // Establishing a relation with the User model.
   user User @relation(fields: [userId], references: [id])
+}
+
+model Exercise {
+  id         Int      @id @default(autoincrement())
+  workoutId  Int
+  name       String
+  sets       Int
+  reps       Int
+  weight     Float
+  
+  // Establishing a relation with the Workout model.
+  workout Workout @relation(fields: [workoutId], references: [id])
 }

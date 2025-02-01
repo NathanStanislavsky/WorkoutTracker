@@ -80,4 +80,24 @@ describe("ThreeBarMenu component", () => {
       value: originalLocation
     });
   });
+
+  it('should navigate to details page when "Details" is clicked', async () => {
+    const { getByLabelText, getByText } = render(ThreeBarMenu, {
+      props: { id: 123 },
+    });
+
+    const toggleButton = getByLabelText("Toggle menu");
+    await fireEvent.click(toggleButton);
+
+    const originalLocation = window.location;
+
+    delete (window as any).location;
+    window.location = { href: "" } as Location;
+
+    await fireEvent.click(getByText("Details"));
+
+    expect(window.location.href).toBe("details/123");
+
+    window.location = originalLocation;
+  });
 });

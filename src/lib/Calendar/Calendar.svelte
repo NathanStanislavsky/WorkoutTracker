@@ -152,7 +152,7 @@
         selectedDate.getDate() === date.day &&
         selectedDate.getMonth() === currentMonth &&
         selectedDate.getFullYear() === currentYear
-          ? "bg-blue-500 text-white"
+          ? "bg-blue-500 text-black"
           : "hover:bg-gray-500"
       }
     `}

@@ -112,7 +112,7 @@
   }
 </script>
 
-<div class="max-w-md mx-auto p-4 bg-slate-800 p-10">
+<div class="max-w-md mx-auto p-8 bg-slate-800">
   <div class="flex justify-between items-center mb-4">
     <button
       on:click={navigateToPrevMonth}

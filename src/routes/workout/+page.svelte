@@ -19,25 +19,25 @@
   }
 </script>
 
-<main class="flex min-h-0 p-8 gap-8">
-  <section class="flex-1 min-h-0" data-testid="workout-carousel">
+<div class="flex h-screen p-4 gap-8">
+  <div class="flex-1" data-testid="workout-carousel">
     {#if workouts.length > 0}
       <WorkoutCarousel {workouts} />
     {:else}
       <p class="text-center text-gray-500">No workouts found</p>
     {/if}
-  </section>
+  </div>
 
-  <button
-    class="absolute bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white font-bold w-16 h-16 text-xl rounded-full flex items-center justify-center shadow-md"
-    aria-label="Add new workout"
-    data-testid="add-workout-button"
-    on:click={handleAddWorkout}
-  >
-    +
-  </button>
-
-  <div class="min-h-0">
+  <div class="">
     <Calendar />
   </div>
-</main>
+</div>
+
+<button
+  class="absolute bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white font-bold w-16 h-16 text-xl rounded-full flex items-center justify-center shadow-md"
+  aria-label="Add new workout"
+  data-testid="add-workout-button"
+  on:click={handleAddWorkout}
+>
+  +
+</button>

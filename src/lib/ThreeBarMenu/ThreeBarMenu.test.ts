@@ -96,7 +96,7 @@ describe("ThreeBarMenu component", () => {
 
     await fireEvent.click(getByText("Details"));
 
-    expect(window.location.href).toBe("details/123");
+    expect(window.location.href).toBe("/details/123");
 
     window.location = originalLocation;
   });

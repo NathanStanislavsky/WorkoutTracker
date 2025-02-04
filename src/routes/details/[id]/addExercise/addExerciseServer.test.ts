@@ -36,9 +36,6 @@ describe("addExercise Server tests", () => {
       ...mockExerciseInput,
     };
 
-    const decodedToken = { userId: 1, email: "test@example.com" };
-    jwt.verify.mockReturnValue(decodedToken);
-
     prisma.exercise.create.mockResolvedValue(createdExercise);
 
     const request = new Request("http://localhost/addExercise", {

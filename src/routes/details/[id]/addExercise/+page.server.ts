@@ -12,13 +12,6 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
       return json({ error: "Unauthorized: No token provided." }, { status: 401 });
     }
 
-    let decoded: { userId: number; email: string };
-    try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number; email: string };
-    } catch (err) {
-      return json({ error: "Unauthorized: Invalid token." }, { status: 401 });
-    }
-    
     const exercise = await prisma.exercise.create({
       data: {
         name,

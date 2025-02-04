@@ -1,13 +1,16 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { prisma } from "$lib/server/prisma";
 import { POST } from "./+page.server";
-import exp from "constants";
+import jwt from "jsonwebtoken";
 
-vi.mock("$lib/Server/prisma.ts", () => ({
+vi.mock("jsonwebtoken", () => ({
+  default: {
+    verify: vi.fn(),
+  },
+}));
+
+vi.mock("$lib/server/prisma", () => ({
   prisma: {
-    workout: {
-      findFirst: vi.fn(),
-    },
     exercise: {
       create: vi.fn(),
     },
@@ -19,19 +22,26 @@ describe("addExercise Server tests", () => {
     vi.resetAllMocks();
   });
 
-  it("adds an exercise to a workout", async () => {
+  it("adds an exercise", async () => {
     const mockExerciseInput = {
-      id: 1,
-      workoutId: 1,
       name: "Push-up",
       sets: 3,
       reps: 10,
       weight: 0,
     };
 
-    prisma.exercise.create.mockResolvedValue(mockExerciseInput);
+    const createdExercise = {
+      id: 1,
+      workoutId: 1,
+      ...mockExerciseInput,
+    };
 
-    const request = new Request("http://localhost/addWorkout", {
+    const decodedToken = { userId: 1, email: "test@example.com" };
+    jwt.verify.mockReturnValue(decodedToken);
+
+    prisma.exercise.create.mockResolvedValue(createdExercise);
+
+    const request = new Request("http://localhost/addExercise", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,19 +49,21 @@ describe("addExercise Server tests", () => {
       body: JSON.stringify(mockExerciseInput),
     });
 
-    const response = await POST({ request });
+    const cookies = {
+      get: vi.fn().mockReturnValue("valid.jwt.token"),
+    };
+
+    const response = await POST({ request, cookies });
     const body = await response.json();
 
     expect(response.status).toBe(201);
-    expect(body).toEqual({ exercise: mockExerciseInput });
-    expect(prisma.workout.create).toHaveBeenCalledWith({
+    expect(body).toEqual(createdExercise);
+    expect(prisma.exercise.create).toHaveBeenCalledWith({
       data: {
-        id: 1,
-        workoutId: 1,
-        name: "Push-up",
-        sets: 3,
-        reps: 10,
-        weight: 0,
+        name: mockExerciseInput.name,
+        sets: +mockExerciseInput.sets,
+        reps: +mockExerciseInput.reps,
+        weight: +mockExerciseInput.weight,
       },
     });
   });

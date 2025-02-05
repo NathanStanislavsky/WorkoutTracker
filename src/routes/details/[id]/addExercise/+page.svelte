@@ -1,11 +1,39 @@
-<script>
+<script lang="ts">
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
+  import { get } from "svelte/store";
+
+  async function handleSubmit(event: Event) {
+    event.preventDefault();
+
+    const { params } = get(page);
+    const { id } = params;
+
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
+
+    const res = await fetch(`/details/${id}/addExercise`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+    if (res.ok) {
+      console.log("Exercise added:", result);
+      goto("/workout");
+    } else {
+      console.error("Error adding exercise:", result.error);
+    }
+  }
 </script>
 
 <div class="flex items-center justify-center min-h-screen">
   <form
+    on:submit={handleSubmit}
     class="w-full max-w-md p-6 bg-slate-800 shadow-md rounded"
-    method="post"
-    action="?/addExercise"
   >
     <h2 class="text-2xl mb-4 text-white">Add a New Exercise</h2>
 

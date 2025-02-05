@@ -11,8 +11,6 @@
     reps: number;
     weight: number;
   }>;
-
-
 </script>
 
 <div class="min-h-screen flex items-center justify-center">
@@ -24,3 +22,11 @@
     {/if}
   </div>
 </div>
+
+<button
+  class="absolute bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white font-bold w-16 h-16 text-xl rounded-full flex items-center justify-center shadow-md"
+  aria-label="Add new exercise"
+  data-testid="add-exercise-button"
+>
+  +
+</button>

@@ -12,4 +12,12 @@ describe("add exercise page tests", () => {
     const { getByText } = render(AddExercisePage);
     expect(getByText("Add a New Exercise")).toBeInTheDocument();
   });
+
+  it('renders the form with the correct fields', () => {
+    const { getByLabelText } = render(AddExercisePage);
+    expect(getByLabelText('Name')).toBeInTheDocument();
+    expect(getByLabelText('Sets')).toBeInTheDocument();
+    expect(getByLabelText('Reps')).toBeInTheDocument();
+    expect(getByLabelText('Weight')).toBeInTheDocument();
+  });
 });

@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { prisma } from "$lib/server/prisma";
-import { POST } from "./+page.server";
-import jwt from "jsonwebtoken";
+import { POST } from "./+server";
 
 vi.mock("jsonwebtoken", () => ({
   default: {

@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
+  import { get } from "svelte/store";
   import ExerciseParent from "$lib/Exercise-Parent/Exercise-Parent.svelte";
 
   import type { PageData } from "./$types";
@@ -11,6 +14,12 @@
     reps: number;
     weight: number;
   }>;
+
+  function handleAddExercise() {
+    const { params } = get(page);
+    const id = params.id;
+    goto(`/details/${id}/addExercise`);
+  }
 </script>
 
 <div class="min-h-screen flex items-center justify-center">
@@ -27,6 +36,7 @@
   class="absolute bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white font-bold w-16 h-16 text-xl rounded-full flex items-center justify-center shadow-md"
   aria-label="Add new exercise"
   data-testid="add-exercise-button"
+  on:click={handleAddExercise}
 >
   +
 </button>

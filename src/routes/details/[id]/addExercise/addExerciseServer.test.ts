@@ -49,7 +49,12 @@ describe("addExercise Server tests", () => {
       get: vi.fn().mockReturnValue("valid.jwt.token"),
     };
 
-    const response = await POST({ request, cookies });
+    const response = await POST({
+      request,
+      cookies,
+      params: { id: "1" }
+    });
+
     const body = await response.json();
 
     expect(response.status).toBe(201);
@@ -60,6 +65,9 @@ describe("addExercise Server tests", () => {
         sets: +mockExerciseInput.sets,
         reps: +mockExerciseInput.reps,
         weight: +mockExerciseInput.weight,
+        workout: {
+          connect: { id: 1 }
+        }
       },
     });
   });

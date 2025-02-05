@@ -23,7 +23,7 @@
     const result = await res.json();
     if (res.ok) {
       console.log("Exercise added:", result);
-      goto("/workout");
+      goto(`/details/${id}`);
     } else {
       console.error("Error adding exercise:", result.error);
     }

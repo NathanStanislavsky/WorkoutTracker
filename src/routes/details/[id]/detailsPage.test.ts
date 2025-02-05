@@ -10,9 +10,9 @@ describe("Details page", () => {
 
   it("renders with exercises", () => {
     const exercises = [
-        { id: "1", name: "Push-up", sets: 3, reps: 10, weight: 0 },
-        { id: "2", name: "Pull-up", sets: 3, reps: 8, weight: 0 },
-      ];
+      { id: "1", name: "Push-up", sets: 3, reps: 10, weight: 0 },
+      { id: "2", name: "Pull-up", sets: 3, reps: 8, weight: 0 },
+    ];
 
     render(DetailsPage, {
       data: {
@@ -22,5 +22,17 @@ describe("Details page", () => {
 
     expect(screen.getByText("Push-up")).toBeInTheDocument();
     expect(screen.getByText("Pull-up")).toBeInTheDocument();
+  });
+
+  it("renders with exercises", () => {
+    const exercises: { id: string, name: string, sets: number, reps: number, weight: number }[] = [];
+
+    render(DetailsPage, {
+      data: {
+        exercises,
+      },
+    });
+
+    expect(screen.getByText("No exercises found")).toBeInTheDocument();
   });
 });

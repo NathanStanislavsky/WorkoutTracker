@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import DetailsPage from "./+page.svelte";
 import { render, screen } from "@testing-library/svelte";
 import "@testing-library/jest-dom";
+import { data } from "./+page.svelte";
 
 describe("Details page", () => {
   beforeEach(() => {
@@ -34,5 +35,15 @@ describe("Details page", () => {
     });
 
     expect(screen.getByText("No exercises found")).toBeInTheDocument();
+  });
+
+  it('renders add exercise button', () => {
+    render(DetailsPage, {
+        data: {
+            exercises: [],
+        },
+    });
+
+    expect(screen.getByTestId("add-exercise-button")).toBeInTheDocument();
   });
 });

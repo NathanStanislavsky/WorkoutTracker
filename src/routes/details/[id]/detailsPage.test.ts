@@ -1,8 +1,22 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/svelte";
 import DetailsPage from "./+page.svelte";
-import { render, screen } from "@testing-library/svelte";
 import "@testing-library/jest-dom";
-import { data } from "./+page.svelte";
+
+vi.mock("$app/navigation", () => {
+  return {
+    goto: vi.fn(),
+  };
+});
+
+vi.mock("$app/stores", async () => {
+  const { readable } = await import("svelte/store");
+  return {
+    page: readable({ params: { id: "123" } }),
+  };
+});
+
+import { goto } from "$app/navigation";
 
 describe("Details page", () => {
   beforeEach(() => {
@@ -16,8 +30,8 @@ describe("Details page", () => {
     ];
 
     render(DetailsPage, {
-      data: {
-        exercises,
+      props: {
+        data: { exercises },
       },
     });
 
@@ -25,25 +39,45 @@ describe("Details page", () => {
     expect(screen.getByText("Pull-up")).toBeInTheDocument();
   });
 
-  it("renders with exercises", () => {
-    const exercises: { id: string, name: string, sets: number, reps: number, weight: number }[] = [];
+  it("renders no exercises message when list is empty", () => {
+    const exercises: Array<{
+      id: string;
+      name: string;
+      sets: number;
+      reps: number;
+      weight: number;
+    }> = [];
 
     render(DetailsPage, {
-      data: {
-        exercises,
+      props: {
+        data: { exercises },
       },
     });
 
     expect(screen.getByText("No exercises found")).toBeInTheDocument();
   });
 
-  it('renders add exercise button', () => {
+  it("renders add exercise button", () => {
     render(DetailsPage, {
-        data: {
-            exercises: [],
-        },
+      props: {
+        data: { exercises: [] },
+      },
     });
 
     expect(screen.getByTestId("add-exercise-button")).toBeInTheDocument();
+  });
+
+  it("redirects to add exercise page when button is clicked", async () => {
+    render(DetailsPage, {
+      props: {
+        data: { exercises: [] },
+      },
+    });
+
+    const addExerciseButton = screen.getByLabelText("Add new exercise");
+
+    await fireEvent.click(addExerciseButton);
+
+    expect(goto).toHaveBeenCalledWith("/details/123/addExercise");
   });
 });

@@ -28,6 +28,10 @@
       alert('An error occurred while deleting the workout.');
     }
   }
+
+  function handleDetails() {
+    window.location.href = `/details/${id}`;
+  }
 </script>
 
 <div class="relative inline-block text-left">
@@ -59,6 +63,13 @@
         role="menuitem"
       >
         Delete
+      </button>
+      <button
+        on:click={handleDetails}
+        class="block w-full px-4 py-2 text-left hover:bg-slate-500 focus:outline-none"
+        role="menuitem"
+      >
+        Details
       </button>
     </div>
   {/if}

@@ -12,37 +12,37 @@ vi.mock("$lib/server/prisma", () => {
   };
 });
 
+function createRequest({
+  params = { id: "1" },
+  locals = { user: { id: 1 } },
+} = {}) {
+  return { params, locals };
+}
+
 describe("delete exercise endpoint tests", () => {
   beforeEach(() => {
     vi.resetAllMocks();
   });
 
   it("should check if user jwt exists (user is logged in)", async () => {
-    const locals = { user: null };
-    const params = { id: "1" };
-
-    await expect(DELETE({ params, locals } as any)).rejects.toMatchObject({
+    const req = createRequest({ locals: { user: null } });
+    await expect(DELETE(req as any)).rejects.toMatchObject({
       status: 401,
       body: { message: "Unauthorized" },
     });
   });
 
   it("should check if exercise ID is valid", async () => {
-    const locals = { user: { id: 1 } };
-    const params = { id: "" };
-
-    await expect(DELETE({ params, locals } as any)).rejects.toMatchObject({
+    const req = createRequest({ params: { id: "" } });
+    await expect(DELETE(req as any)).rejects.toMatchObject({
       status: 400,
       body: { message: "Invalid exercise ID" },
     });
   });
 
   it("should call prisma to delete exercise with the correct id", async () => {
-    const locals = { user: { id: 1 } };
-    const params = { id: "1" };
-
-    await DELETE({ params, locals } as any);
-
+    const req = createRequest({ params: { id: "1" } });
+    await DELETE(req as any);
     expect(prisma.exercise.delete).toHaveBeenCalledWith({
       where: { id: 1 },
     });

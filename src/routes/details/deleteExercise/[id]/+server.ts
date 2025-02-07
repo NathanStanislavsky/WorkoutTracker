@@ -5,4 +5,6 @@ export const DELETE: RequestHandler = async ({locals }) => {
   if (!locals.user) {
     throw error(401, "Unauthorized");
   }
+
+  
 };

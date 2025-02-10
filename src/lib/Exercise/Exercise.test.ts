@@ -19,6 +19,16 @@ describe('Exercise Component', () => {
         expect(getByText('10')).toBeInTheDocument();
         expect(getByText('Weight')).toBeInTheDocument();
         expect(getByText('100')).toBeInTheDocument();
+    });
 
+    it('renders exercise component with "delete" button', () => {
+        const { getByText } = render(Exercise, { props: {
+            name: 'Push Ups',
+            sets: 3,
+            reps: 10,
+            weight: 100,
+        }});
+
+        expect(getByText('x')).toBeInTheDocument();
     });
 });

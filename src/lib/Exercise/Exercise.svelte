@@ -1,14 +1,27 @@
 <script lang="ts">
+  export let id: number;
   export let name: string;
   export let sets: number;
   export let reps: number;
   export let weight: number;
+
+  async function deleteExercise() {
+    const response = await fetch(`/details/deleteExercise/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      console.error("Failed to delete exercise");
+    }
+
+    location.reload();
+  }
 </script>
 
 <div
   class="relative p-5 bg-slate-800 rounded-lg shadow-md hover:shadow-xl transition-shadow text-white"
 >
   <button
+    on:click={deleteExercise}
     class="absolute top-2 right-2 text-gray-400 hover:text-white p-1"
     aria-label="Delete Exercise"
   >

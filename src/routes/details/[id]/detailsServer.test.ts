@@ -35,23 +35,25 @@ describe("Exercise loader", () => {
     await expect(load({ locals, params })).rejects.toThrow("Workout not found");
   });
 
-  it('if workout exists, fetches exercises for that workout', async () => {
+  it("if workout exists, fetches exercises for that workout", async () => {
     const locals = { user: { id: 1 } };
-    const params = { workoutId: "workout-id" };
+    const params = { id: 1 };
 
-    prisma.workout.findFirst.mockResolvedValue({ id: "workout-id" });
-    prisma.exercise.findMany.mockResolvedValue([
-      { id: "exercise-id-1", name: "exercise 1" },
-      { id: "exercise-id-2", name: "exercise 2" },
-    ]);
-
-    const result = await load({ locals, params });
-    
-    expect(result).toEqual({
+    prisma.workout.findFirst.mockResolvedValue({
+      id: 1,
       exercises: [
         { id: "exercise-id-1", name: "exercise 1" },
         { id: "exercise-id-2", name: "exercise 2" },
       ]
+    });
+
+    const result = await load({ locals, params });
+
+    expect(result).toEqual({
+      exercises: [
+        { id: "exercise-id-1", name: "exercise 1" },
+        { id: "exercise-id-2", name: "exercise 2" },
+      ],
     });
   });
 });

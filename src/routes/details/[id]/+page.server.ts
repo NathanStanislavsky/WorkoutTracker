@@ -8,13 +8,19 @@ export const load: PageServerLoad = async ({ locals, params }) => {
     return { exercises: [] };
   }
 
-  const { workoutId } = params;
-
+  const { id } = params;
+  const workoutId = Number(id);
+  
   try {
     const workout = await prisma.workout.findFirst({
       where: {
         id: workoutId,
         userId: user.id,
+      },
+      include: {
+        exercises: {
+          orderBy: { id: "asc" },
+        },
       },
     });
 
@@ -22,16 +28,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
       throw new Error("Workout not found");
     }
 
-    const exercises = await prisma.exercise.findMany({
-      where: {
-        workoutId: workout.id,
-      },
-      orderBy: {
-        id: "asc",
-      },
-    });
-
-    return { exercises };
+    return { exercises: workout.exercises };
   } catch (error) {
     console.error("Error fetching exercises:", error);
     throw error;

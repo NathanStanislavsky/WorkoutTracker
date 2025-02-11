@@ -31,4 +31,28 @@ describe("Edit workout page", () => {
     expect(screen.getByLabelText('Reps')).toBeInTheDocument();
     expect(screen.getByLabelText('Weight')).toBeInTheDocument();
   });
+
+  it('should preload inputs with exercise values', () => {
+    const mockData = {
+      exercise: {
+        id: 1,
+        name: 'Bench Press',
+        sets: 3,
+        reps: 10,
+        weight: 100,
+      },
+    };
+
+    render(EditWorkoutPage, { props: { data: mockData } });
+
+    const nameInput = screen.getByLabelText(/name/i);
+    const setsInput = screen.getByLabelText(/sets/i);
+    const repsInput = screen.getByLabelText(/reps/i);
+    const weightInput = screen.getByLabelText(/weight/i);
+
+    expect(nameInput).toHaveValue('Bench Press');
+    expect(setsInput).toHaveValue(3);
+    expect(repsInput).toHaveValue(10);
+    expect(weightInput).toHaveValue(100);
+  });
 });

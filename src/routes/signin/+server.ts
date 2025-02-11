@@ -44,7 +44,7 @@ export const POST: RequestHandler = async ({
     });
   } catch (error) {
     console.error(error);
-    return new Response(JSON.stringify({ error: "Login failed" }), {
+    return new Response(JSON.stringify({ error: "signin failed" }), {
       status: 500,
     });
   }

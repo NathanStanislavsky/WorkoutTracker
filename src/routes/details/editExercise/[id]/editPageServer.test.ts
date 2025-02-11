@@ -2,6 +2,7 @@ import "@testing-library/jest-dom";
 import { describe, expect, it, beforeEach, vi } from "vitest";
 import { load } from "./+page.server";
 import { prisma } from "$lib/server/prisma";
+import { mock } from "node:test";
 
 vi.mock("$lib/server/prisma", () => ({
   prisma: {
@@ -10,6 +11,14 @@ vi.mock("$lib/server/prisma", () => ({
     },
   },
 }));
+
+const mockExercise = {
+  id: 1,
+  name: "Bench Press",
+  sets: 3,
+  reps: 10,
+  weight: 100,
+};
 
 describe("Edit exercise endpoint", () => {
   beforeEach(() => {
@@ -21,20 +30,12 @@ describe("Edit exercise endpoint", () => {
     const locals = { user: { id: 1 } };
 
     (prisma.exercise.findUnique as any).mockResolvedValue({
-      id: 1,
-      name: "Bench Press",
-      sets: 3,
-      reps: 10,
-      weight: 100,
+      mockExercise
     });
 
     const result = await load({ params, locals });
     expect(result.exercise).toEqual({
-      id: 1,
-      name: "Bench Press",
-      sets: 3,
-      reps: 10,
-      weight: 100,
+      mockExercise
     });
   });
 });

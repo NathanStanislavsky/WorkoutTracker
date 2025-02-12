@@ -6,7 +6,7 @@
 </script>
 
 <div class="h-full flex items-center justify-center">
-  <form class="w-full max-w-md p-6 bg-slate-800 shadow-md rounded-md">
+  <form method="post" class="w-full max-w-md p-6 bg-slate-800 shadow-md rounded-md">
     <h2 class="text-2xl mb-4 text-white">Edit Exercise</h2>
 
     <div class="mb-4">

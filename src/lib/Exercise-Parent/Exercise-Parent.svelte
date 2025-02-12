@@ -2,6 +2,7 @@
     import Exercise from "../Exercise/Exercise.svelte";
     
     export let exercises: {
+        id: number;
         name: string;
         sets: number;
         reps: number;
@@ -15,6 +16,7 @@
     {#each exercises as exercise}
       <div class="snap-start">
         <Exercise
+            id={exercise.id}
             name={exercise.name}
             sets={exercise.sets}
             reps={exercise.reps}

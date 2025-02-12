@@ -4,7 +4,7 @@ import { prisma } from "$lib/server/prisma";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-describe("POST /login endpoint", () => {
+describe("POST /signin endpoint", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -54,7 +54,7 @@ describe("POST /login endpoint", () => {
     expect(data).toHaveProperty("error", "Invalid credentials");
   });
 
-  it("returns a valid token on successful login", async () => {
+  it("returns a valid token on successful signin", async () => {
     const passwordHash = await bcrypt.hash("correct-password", 10);
     const fakeUser = {
       id: 1,

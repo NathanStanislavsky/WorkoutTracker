@@ -4,7 +4,7 @@ import { error, redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ params, locals }) => {
   if (!locals.user) {
-    throw redirect(302, "/login");
+    throw redirect(302, "/signin");
   }
 
   const id = Number(params.id);
@@ -23,7 +23,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 export const actions: Actions = {
   default: async ({ request, params, locals }) => {
     if (!locals.user) {
-      throw redirect(302, "/login");
+      throw redirect(302, "/signin");
     }
 
     const formData = await request.formData();

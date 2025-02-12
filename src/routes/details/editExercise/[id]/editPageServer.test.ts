@@ -15,15 +15,15 @@ vi.mock('$lib/server/prisma', () => {
   };
 });
 
-const mockExercise = {
-  id: 1,
-  name: "Bench Press",
-  sets: 3,
-  reps: 10,
-  weight: 100,
-};
-
 describe("Edit exercise endpoint", () => {
+  const mockExercise = {
+    id: 1,
+    name: "Bench Press",
+    sets: 3,
+    reps: 10,
+    weight: 100,
+  };
+
   beforeEach(() => {
     vi.resetAllMocks();
   });
@@ -44,6 +44,13 @@ describe("Edit exercise endpoint", () => {
 });
 
 describe('Actions', () => {
+  const fakeFormData = {
+    name: 'Bench Press',
+    sets: '3',
+    reps: '10',
+    weight: '100'
+  };
+
   beforeEach(() => {
     vi.resetAllMocks();
   });
@@ -55,13 +62,6 @@ describe('Actions', () => {
   });
 
   it('calls prisma update with correct data', async () => {
-    const fakeFormData = {
-      name: 'Bench Press',
-      sets: '3',
-      reps: '10',
-      weight: '100'
-    };
-
     const request = createFakeRequest(fakeFormData);
     const params = { id: '1' };
 
@@ -85,13 +85,6 @@ describe('Actions', () => {
   });
 
   it('throws a 500 error if the update fails', async () => {
-    const fakeFormData = {
-      name: 'Bench Press',
-      sets: '3',
-      reps: '10',
-      weight: '100'
-    };
-
     const request = createFakeRequest(fakeFormData);
     const params = { id: '1' };
 

@@ -31,14 +31,19 @@ export const actions: Actions = {
 
     const id = Number(params.id);
 
-    await prisma.exercise.update({
-      where: { id },
-      data: {
-        name: exerciseName,
-        sets: exerciseSets,
-        reps: exerciseReps,
-        weight: exerciseWeight,
-      },
-    });
-  },
+    try {
+      await prisma.exercise.update({
+        where: { id },
+        data: {
+          name: exerciseName,
+          sets: exerciseSets,
+          reps: exerciseReps,
+          weight: exerciseWeight,
+        },
+      });
+    } catch (err) {
+      console.error("Error updating exercise", err);
+      throw error(500, "Could not update exercise");
+    }
+  }
 };

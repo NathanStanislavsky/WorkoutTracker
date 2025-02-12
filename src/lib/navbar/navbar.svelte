@@ -24,12 +24,12 @@
 
     <div>
       <!-- Home Button -->
-      <a href="/" class="p-4">
+      <a href="/workout" class="p-4">
         <button
           class="bg-slate-700 hover:bg-slate-600 transition-colors
            px-5 py-2 rounded-md text-white text-2xl font-medium"
         >
-          Home
+          Workout
         </button>
       </a>
 

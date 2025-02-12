@@ -19,3 +19,26 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
   return { exercise };
 };
+
+export const actions: Actions = {
+  default: async ({ request, params }) => {
+    let formData = await request.formData();
+
+    const exerciseName = formData.get("name") as string;
+    const exerciseSets = Number(formData.get("sets"));
+    const exerciseReps = Number(formData.get("reps"));
+    const exerciseWeight = Number(formData.get("weight"));
+
+    const id = Number(params.id);
+
+    await prisma.exercise.update({
+      where: { id },
+      data: {
+        name: exerciseName,
+        sets: exerciseSets,
+        reps: exerciseReps,
+        weight: exerciseWeight,
+      },
+    });
+  },
+};

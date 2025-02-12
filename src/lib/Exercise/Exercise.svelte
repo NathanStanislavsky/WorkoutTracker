@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
+
   export let id: number;
   export let name: string;
   export let sets: number;
@@ -12,8 +14,11 @@
     if (!response.ok) {
       console.error("Failed to delete exercise");
     }
-
     location.reload();
+  }
+
+  async function editExercise() {
+    goto(`/details/editExercise/${id}`);
   }
 </script>
 
@@ -22,10 +27,18 @@
 >
   <button
     on:click={deleteExercise}
-    class="absolute top-2 right-2 text-gray-400 hover:text-white p-1"
+    class="absolute top-1 right-2 text-gray-400 hover:text-white"
     aria-label="Delete Exercise"
   >
     x
+  </button>
+
+  <button
+    on:click={editExercise}
+    class="absolute bottom-1 right-2 text-gray-400 hover:text-white"
+    aria-label="Edit Exercise"
+  >
+    edit
   </button>
 
   <div class="grid grid-cols-4 items-center gap-4 mb-4">

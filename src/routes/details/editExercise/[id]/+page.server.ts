@@ -14,7 +14,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
   });
 
   if (!exercise) {
-    throw error(404, "Workout not found");
+    throw error(404, "Exercise not found");
   }
 
   return { exercise };

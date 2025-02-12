@@ -83,4 +83,24 @@ describe('Actions', () => {
 
     expect(result).toBeUndefined();
   });
+
+  it('throws a 500 error if the update fails', async () => {
+    const fakeFormData = {
+      name: 'Bench Press',
+      sets: '3',
+      reps: '10',
+      weight: '100'
+    };
+
+    const request = createFakeRequest(fakeFormData);
+    const params = { id: '1' };
+
+    vi.spyOn(prisma.exercise, 'update').mockRejectedValue(new Error('DB error'));
+
+    try {
+      await actions.default({ request, params });
+    } catch (err: any) {
+      expect(err.status).toBe(500);
+    }
+  });
 });

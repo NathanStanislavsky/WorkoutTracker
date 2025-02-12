@@ -5,7 +5,19 @@ import EditWorkoutPage from "./+page.svelte";
 
 describe("Edit workout page", () => {
   it("Renders the page heading", () => {
-    render(EditWorkoutPage);
+    render(EditWorkoutPage, {
+      props: {
+        data: {
+          exercise: {
+            id: 1,
+            name: 'Bench Press',
+            sets: 3,
+            reps: 10,
+            weight: 100
+          }
+        }
+      }
+    });
 
     const heading = screen.getByRole("heading", { name: /edit exercise/i });
     expect(heading).toBeInTheDocument();

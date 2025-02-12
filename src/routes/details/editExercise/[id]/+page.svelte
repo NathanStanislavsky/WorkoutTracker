@@ -1,60 +1,60 @@
 <script lang="ts">
+  import type { PageData } from "./$types";
+  export let data: PageData;
+
+  const { exercise } = data;
 </script>
 
 <div class="h-full flex items-center justify-center">
-  <form
-    class="w-full max-w-md p-6 bg-slate-800 shadow-md rounded-md"
-  >
+  <form class="w-full max-w-md p-6 bg-slate-800 shadow-md rounded-md">
     <h2 class="text-2xl mb-4 text-white">Edit Exercise</h2>
 
     <div class="mb-4">
-      <label for="exercise-type" class="block mb-2 text-white">Name</label>
+      <label for="name" class="block mb-2 text-white">Name</label>
       <input
         type="text"
-        id="exercise-type"
-        name="exercise-type"
-        placeholder="Enter exercise name"
+        id="name"
+        name="name"
+        value={exercise.name}
+        required
         class="w-full p-2 border border-gray-300 rounded"
       />
     </div>
 
     <div class="mb-4">
-      <label for="exercise-sets" class="block mb-2 text-white"
-        >Sets</label
-      >
+      <label for="sets" class="block mb-2 text-white">Sets</label>
       <input
         type="number"
-        id="exercise-sets"
+        id="sets"
         name="sets"
         min="1"
+        value={exercise.sets}
         required
         class="w-full px-3 py-2 border rounded"
       />
     </div>
 
     <div class="mb-4">
-      <label for="exercise-reps" class="block mb-2 text-white"
-        >Reps</label
-      >
+      <label for="reps" class="block mb-2 text-white">Reps</label>
       <input
         type="number"
-        id="exercise-reps"
+        id="reps"
         name="reps"
         min="1"
+        value={exercise.reps}
         required
         class="w-full px-3 py-2 border rounded"
       />
     </div>
 
     <div class="mb-4">
-      <label for="weight" class="block mb-2 text-white"
-        >Weight</label
-      >
+      <label for="weight" class="block mb-2 text-white">Weight</label>
       <input
         type="number"
         id="weight"
         name="weight"
         min="1"
+        value={exercise.weight}
         required
         class="w-full px-3 py-2 border rounded"
       />
@@ -68,4 +68,3 @@
     </button>
   </form>
 </div>
-

@@ -53,6 +53,7 @@ describe("Actions", () => {
 
   beforeEach(() => {
     vi.resetAllMocks();
+    vi.spyOn(console, "error").mockImplementation(() => {});
   });
 
   const createFakeRequest = (data: Record<string, string>) => ({

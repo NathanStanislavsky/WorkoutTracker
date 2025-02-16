@@ -1,4 +1,7 @@
 <script>
+  import { page } from "$app/stores";
+  $: user = $page.data.user;
+
   export let logoUrl = "/workout-logo.png";
 
   async function handleLogout() {
@@ -23,44 +26,47 @@
     </div>
 
     <div>
-      <!-- Workout Button -->
-      <a href="/workout" class="p-4">
-        <button
-          class="bg-slate-700 hover:bg-slate-600 transition-colors
-           px-5 py-2 rounded-md text-white text-2xl font-medium"
-        >
-          Workout
-        </button>
-      </a>
+      {#if !user}
+        <!-- Sign up button (visible only when not logged in) -->
+        <a href="/signup" class="p-4">
+          <button
+            class="bg-slate-700 hover:bg-slate-600 transition-colors
+             px-5 py-2 rounded-md text-white text-2xl font-medium"
+          >
+            Sign Up
+          </button>
+        </a>
 
-      <!-- Sign up button -->
-      <a href="/signup" class="p-4">
-        <button
-          class="bg-slate-700 hover:bg-slate-600 transition-colors
+        <!-- Sign in button (visible only when not logged in) -->
+        <a href="/signin" class="p-4">
+          <button
+            class="bg-slate-700 hover:bg-slate-600 transition-colors
+             px-5 py-2 rounded-md text-white text-2xl font-medium"
+          >
+            Sign In
+          </button>
+        </a>
+      {:else}
+        <!-- Workout Button -->
+        <a href="/workout" class="p-4">
+          <button
+            class="bg-slate-700 hover:bg-slate-600 transition-colors
            px-5 py-2 rounded-md text-white text-2xl font-medium"
-        >
-          Sign Up
-        </button>
-      </a>
-
-      <!-- Sign in button -->
-      <a href="/signin" class="p-4">
-        <button
-          class="bg-slate-700 hover:bg-slate-600 transition-colors
-           px-5 py-2 rounded-md text-white text-2xl font-medium"
-        >
-          Sign In
-        </button>
-      </a>
-      <span class="p-4">
-        <button
-          on:click={handleLogout}
-          class="bg-slate-700 hover:bg-slate-600 transition-colors
-      px-5 py-2 rounded-md text-white text-2xl font-medium"
-        >
-          Logout
-        </button>
-      </span>
+          >
+            Workout
+          </button>
+        </a>
+        <!-- Logout button (visible only when logged in) -->
+        <span class="p-4">
+          <button
+            on:click={handleLogout}
+            class="bg-slate-700 hover:bg-slate-600 transition-colors
+             px-5 py-2 rounded-md text-white text-2xl font-medium"
+          >
+            Logout
+          </button>
+        </span>
+      {/if}
     </div>
   </div>
 </nav>

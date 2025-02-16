@@ -1,6 +1,4 @@
 <script>
-  import { goto } from "$app/navigation";
-
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -18,7 +16,7 @@
     const result = await res.json();
     if (res.ok) {
       console.log("User signed in successfully:", result);
-      goto("/workout");
+      window.location.href = "/workout";
     } else {
       console.error("Error signing in user:", result.error);
     }

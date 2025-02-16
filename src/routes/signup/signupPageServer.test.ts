@@ -1,4 +1,3 @@
-// server.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { POST } from "./+server";
 import { prisma } from "$lib/server/prisma";
@@ -7,6 +6,7 @@ import bcrypt from "bcryptjs";
 describe("POST /signup endpoint", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.spyOn(console, "error").mockImplementation(() => {});
   });
 
   it("should register a new user when the email is unique", async () => {

@@ -14,11 +14,11 @@ describe('Navbar Component', () => {
     expect(getByAltText('Workout logo')).toHaveAttribute('src', 'logo.png');
   });
 
-  it('includes a home link with the correct href', () => {
+  it('includes a workout link with the correct href', () => {
     const { getByRole } = render(navbar);
-    const homeLink = getByRole('link', { name: 'Home' });
-    expect(homeLink).toBeInTheDocument();
-    expect(homeLink.getAttribute('href')).toBe('/');
+    const workoutLink = getByRole('link', { name: 'Workout' });
+    expect(workoutLink).toBeInTheDocument();
+    expect(workoutLink.getAttribute('href')).toBe('/workout');
   });
 
   it('includes a signup link with the correct href', () => {

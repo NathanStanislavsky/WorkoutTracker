@@ -23,7 +23,7 @@
     </div>
 
     <div>
-      <!-- Home Button -->
+      <!-- Workout Button -->
       <a href="/workout" class="p-4">
         <button
           class="bg-slate-700 hover:bg-slate-600 transition-colors

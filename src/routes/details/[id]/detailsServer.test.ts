@@ -16,6 +16,7 @@ vi.mock("$lib/Server/prisma.ts", () => ({
 describe("Exercise loader", () => {
   beforeEach(() => {
     vi.resetAllMocks();
+    vi.spyOn(console, "error").mockImplementation(() => {});
   });
 
   it("if user does not exist, returns an empty workout array", async () => {
